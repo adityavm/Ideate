@@ -29,7 +29,7 @@ function postForm(id){
 	if (id)
 		$.getJSON("/tb/idea/get.post.php", {id: id}, function(ret){
 			data = ret;
-			$text.val(data.raw);
+			$text.data("cm-ed").setOption("value", data.raw);
 			$link.val(data.link);
 		});
 
@@ -102,7 +102,7 @@ function postForm(id){
 			$.post("/tb/idea/post.post.php", {
 				id: id,
 				iid: idea.id,
-				text: $.trim($text.val()),
+				text: $.trim($text.data("cm-ed").getValue()),
 				link: $link.val()
 			}, function(ret){
 				if(id){ //existing post
@@ -146,6 +146,14 @@ function postForm(id){
 	$cont.append($tag, $save, $canc);
 
 	$form.append($cont, $text, $link);
+	var editor = CodeMirror.fromTextArea($text.get(0), {
+        mode: "markdown",
+        theme: "elegant",
+		lineWrapping: "true",
+		viewportMargin: Infinity,
+        extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"}
+	});
+	$text.data("cm-ed", editor);
 	$form.hide();
 	return $form;
 }

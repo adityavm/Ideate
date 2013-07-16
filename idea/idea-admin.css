@@ -44,6 +44,7 @@ a.new-post:hover {
 	position: relative;
 }
 
+/*
 .edit-post-text {
 	background-color: #fafafa; color: #666;
 	font: italic 10pt "pt-sans", sans-serif;
@@ -61,11 +62,19 @@ a.new-post:hover {
 	background-color: #fff;
 	color: #000;
 }
+*/
+
+/* codemirror style overrides */
+.cm-strong {
+	font-weight: 400;
+}
+
+/* codermirror end */
 
 .edit-post-link {
-	width: 100%;
+	width: 384px;
 	padding: 5px 8px;
-	font: italic 10pt "pt-sans", sans-serif;
+	font: italic 11pt "freight-sans-pro", sans-serif;
 	background-color: #fafafa; color: #666;
 	border: 1px solid #f5f5f5;
 }

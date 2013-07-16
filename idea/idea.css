@@ -38,13 +38,15 @@ body {
 	position: relative; top: 4px;
 }
 
-.head .bar .nav {
+.head .bar .nav,
+.feet .nav {
 	float: right;
 	text-align: right;
 	width: 300px;
 }
 
-.head .bar .nav a {
+.head .bar .nav a,
+.feet .nav a {
 	color: #ddd;
 	font: 10pt "proxima-nova", sans-serif;
 	text-decoration: none;
@@ -54,17 +56,24 @@ body {
 	display: inline-block;
 }
 
-.head .bar .nav a.active {
+.feet .nav a {
+	padding-top: 0;
+}
+
+.head .bar .nav a.active,
+.feet .nav a.active {
 	border-top: 2px solid #aaa;
 	padding-top: 3px;
 	color: #fff;
 }
 
-.head .bar .nav a:hover {
+.head .bar .nav a:hover,
+.feet .nav a:hover {
 	color: #fff;
 }
 
-.head .bar .nav a.disabled {
+.head .bar .nav a.disabled,
+.feet .nav a.disabled {
 	color: #666;
 	border-color: transparent;
 	cursor: default;
@@ -162,7 +171,7 @@ p.sep {
 .body {
 	margin: 0 auto;
 	width: 400px;
-	font: 10pt "pt-sans", "Helvetica Neue", sans-serif;
+	font: 11pt/1.3em "freight-sans-pro", "Helvetica Neue", sans-serif;
 }
 
 .body .post {
@@ -181,7 +190,7 @@ p.sep {
 
 .body .post .related-to {
 	width: 70px;
-	font: italic 9pt "pt-sans", serif;
+	font: italic 9pt "freight-sans-pro", serif;
 	color: #888;
 	position: absolute; right: -80px;
 }
@@ -193,7 +202,7 @@ p.sep {
 }
 
 .body .post .related-to .label {
-	font: italic 9pt "pt-sans", serif;
+	font: italic 9pt "freight-sans-pro", serif;
 	color: #888;
 	margin-bottom: 5px;
 	width: 30px;
@@ -211,7 +220,7 @@ p.sep {
 	color: rgba(0,0,0,0.3);
 	font: 9pt "Monaco",monospace;
 	float: left;
-	margin-right: 4px; margin-top: 0.1em;
+	margin-right: 4px; margin-top: 0.2em;
 	text-decoration: none;
 }
 

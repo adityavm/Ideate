@@ -10,7 +10,6 @@ $auth = $db->_query("SELECT * FROM auth LIMIT 1");
 if($_COOKIE[$auth['cookie']])
 	$LOGGED = true;
 
-
 # get idea ID from URL
 $iid = $_GET['id'];
 if(ctype_digit($iid)){
@@ -22,11 +21,13 @@ if(ctype_digit($iid)){
 if(!$idea)
 	header("Location: /");
 
-echo "<!--\n";
-echo '$idea:',  "\n", var_export($idea), "\n";
-echo '$posts:',  "\n", var_export($posts), "\n";
-echo '$_GET:', "\n", var_export($_GET), "\n";
-echo "-->";
+if($LOGGED){
+	echo "<!--\n";
+	echo '$idea:',  "\n", var_export($idea), "\n";
+	echo '$posts:',  "\n", var_export($posts), "\n";
+	echo '$_GET:', "\n", var_export($_GET), "\n";
+	echo "-->";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,7 +37,11 @@ echo "-->";
 	<meta charset='utf-8'> 
 
 	<link rel="stylesheet" type="text/css" href="/tb/idea/idea.css" />
-	<link rel="stylesheet" type="text/css" href="/tb/idea/idea-admin.css" />
+	<?php if($LOGGED){ ?>
+		<link rel="stylesheet" href="/tb/idea/cm/codemirror.css" />
+		<link rel="stylesheet" href="/tb/idea/cm/elegant.css" />
+		<link rel="stylesheet" type="text/css" href="/tb/idea/idea-admin.css" />
+	<? } ?>
 	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 	<style type="text/css">
@@ -67,8 +72,12 @@ echo "-->";
 		}
 	</script>
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script src="/tb/idea/idea-admin.js" type="text/javascript"></script>
+	<?php if($LOGGED){ ?>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="/tb/idea/cm/codemirror.js"></script>
+		<script src="/tb/idea/cm/markdown.js"></script>
+		<script src="/tb/idea/idea-admin.js" type="text/javascript"></script>
+	<? } ?>
 
 	<script type="text/javascript" src="//use.typekit.net/rau5wab.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -198,7 +207,10 @@ echo "-->";
 		?>
 	</div>
 	<div class="feet">
-			<div class="copy"><span class="cpy-label">Copyright &copy; 2013</span> <span>+</span> Aditya Mukherjee <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a> <span>+</span> <a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
+		<div class="copy"><span class="cpy-label">Copyright &copy; 2013</span> <span>+</span> Aditya Mukherjee <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a> <span>+</span> <a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
+		<div class="nav">
+			<a href="/">Home</a>
+		</div>
 	</div>
 
 </body>
