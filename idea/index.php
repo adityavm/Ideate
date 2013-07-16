@@ -36,15 +36,21 @@ if($LOGGED){
 
 	<meta charset='utf-8'> 
 
-	<link rel="stylesheet" type="text/css" href="/tb/idea/idea.css" />
+	<link rel="stylesheet" type="text/css" href="/tb/style/global.less" />
+	<link rel="stylesheet" type="text/css" href="/tb/idea/style/idea.less" />
 	<?php if($LOGGED){ ?>
 		<link rel="stylesheet" href="/tb/idea/cm/codemirror.css" />
 		<link rel="stylesheet" href="/tb/idea/cm/elegant.css" />
-		<link rel="stylesheet" type="text/css" href="/tb/idea/idea-admin.css" />
+		<link rel="stylesheet" type="text/css" href="/tb/idea/style/idea-admin.less" />
 	<? } ?>
 	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 	<style type="text/css">
+		@-webkit-keyframes fadeOutBg {
+			0% { background-color: #fff; border-color: #aaa; -webkit-animation-timing-function: ease-out; }
+			100% { background-color: #f5f5f5; border-color: #f5f5f5; -webkit-animation-timing-function: ease-out; }
+		}
+
 		::selection {
 			background-color: <?php echo $idea['bg_color'] ?>;
 			color: #fff;
@@ -135,7 +141,7 @@ if($LOGGED){
 						<div class="related-to">
 						<?php
 							if($post['link']): ?>
-								<a class="fr" href="<?php echo $post['link'] ?>" target="_blank">further reading.</a>
+								<a class="fr" href="<?php echo $post['link'] ?>" target="_blank">further reading</a>
 							<? endif; ?>
 							<?php
 								$related = array();

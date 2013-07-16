@@ -13,14 +13,19 @@ if($_COOKIE[$auth['cookie']])
 <html>
 <head>
 	<title>Aditya Mukherjee</title>
-	<link rel="stylesheet" type="text/css" href="./tb/all/ideas.css" />
-	<link rel="stylesheet" type="text/css" href="./tb/all/ideas-admin.css" />
-	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./tb/style/global.less" />
+	<link rel="stylesheet" type="text/css" href="./tb/all/style/ideas.less" />
+
+	<?php if($LOGGED): ?>
+		<link rel="stylesheet" type="text/css" href="./tb/all/style/ideas-admin.less" />
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+	<?php endif; ?>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script src="./tb/all/raphael.js" type="text/javascript"></script>
-	<script src="./tb/all/ideas-admin.js" type="text/javascript"></script>
 	<script src="./tb/all/ideas.js" type="text/javascript"></script>
+
+	<?php if($LOGGED){ ?><script src="./tb/all/ideas-admin.js" type="text/javascript"></script><?php } ?>
 
 	<script type="text/javascript" src="//use.typekit.net/rau5wab.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>

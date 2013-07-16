@@ -5,7 +5,9 @@
   font-family: monospace;
   font-family: "freight-sans-pro";
   font-style: italic;
-  height: 300px;
+  line-height: 19px;
+  height: 300px; 
+  min-height: 24px;
   height: auto;
 }
 .CodeMirror-scroll {

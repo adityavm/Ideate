@@ -6,6 +6,7 @@ function editButtonHandler(){
 	$form = postForm(pid);
 	$this.children(".post-body").add($this.children(".edit-btns")).add($this.children(".related-to")).fadeOut("fast", function(){
 		$this.append($form.fadeIn("fast"));
+		$form.find("textarea").data("cm-ed").focus();
 	});
 }
 
@@ -15,6 +16,7 @@ function newPostButtonHandler(){
 	$form = postForm();
 
 	$(".body").append($form.fadeIn("fast"));
+	$form.find("textarea").data("cm-ed").focus();
 }
 
 function postForm(id){
