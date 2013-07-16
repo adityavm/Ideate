@@ -1,0 +1,42 @@
+@import url("../global.css");
+
+.head {
+	margin: 100px auto;
+	text-align: center;
+}
+
+.head .back {
+	font: 11pt "pt-sans",sans-serif;
+	text-align: center;
+}
+
+.head .back a,
+.head .back a:visited {
+	color: #000;
+	text-decoration: none;
+}
+
+.head .back a:hover {
+	text-decoration: underline;
+}
+
+.head .title {
+	font: 40pt "proxima-nova",sans-serif;
+	text-transform: uppercase;
+}
+
+.body {
+	width: 200px;
+	margin: 0 auto;
+}
+
+.body form input {
+	width: 200px;
+	padding: 5px;
+	font: 12pt "pt-sans", sans-serif;
+	display: block;
+}
+
+.body form input[type="submit"]{
+	display: none;
+}
