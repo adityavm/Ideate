@@ -1,1 +1,0 @@
-[16-Jul-2013 02:47:05] PHP Fatal error:  Cannot use object of type mysqli_result as array in /home/aditya/public_html/tb/idea/index.php on line 10

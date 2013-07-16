@@ -208,10 +208,12 @@ if($LOGGED){
 	</div>
 	<div class="feet">
 		<div class="copy"><span class="cpy-label">Copyright &copy; 2013</span> <span>+</span> Aditya Mukherjee <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a> <span>+</span> <a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
+		</div>
 		<div class="nav">
+			<a href="http://adityamukherjee.com/rss/<?php echo $idea['iid']; ?>"><span class="icon-rss"></span></a>
 			<a href="/">Home</a>
 		</div>
+		<div class="clear"></div>
 	</div>
-
 </body>
 </html>

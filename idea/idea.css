@@ -57,7 +57,7 @@ body {
 }
 
 .feet .nav a {
-	padding-top: 0;
+	padding-top: 10px;
 }
 
 .head .bar .nav a.active,
@@ -247,6 +247,8 @@ p.sep {
 	color: #fff;
 	padding: 10px 8px;
 	margin: 0 auto;
+	float: left;
+	width: 500px;
 }
 
 .feet .copy .cpy-label {
