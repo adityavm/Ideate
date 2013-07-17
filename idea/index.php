@@ -36,7 +36,6 @@ if($LOGGED){
 
 	<meta charset='utf-8'> 
 
-	<link rel="stylesheet" type="text/css" href="/tb/style/global.less" />
 	<link rel="stylesheet" type="text/css" href="/tb/idea/style/idea.less" />
 	<?php if($LOGGED){ ?>
 		<link rel="stylesheet" href="/tb/idea/cm/codemirror.css" />
@@ -106,7 +105,8 @@ if($LOGGED){
 				if ($idea['title']):
 			?>
 				<div class="title-wrap">
-					<div class="title"><? echo $idea['title'] ?></div>
+					<div class="title"><? echo $idea['title'] ?></div><br/>
+					<div class="desc"><? echo $idea['desc'] ?></div>
 					<div class="clear"></div>
 			<?php
 				$related = array();
@@ -118,7 +118,7 @@ if($LOGGED){
 				if(count($related)):
 					for($i=0;$i<count($related);$i++):
 			?>
-				<a href="./<?php echo $related[$i]['iid']?>"><div class="related-circle" style="background-color:<?php echo $related[$i]['bg_color']?>;background-image:url('<?php echo $related[$i]['bg_img_small']?>');"></div></a>
+				<a href="./<?php echo $related[$i]['iid']?>" title="<?php echo $related[$i]['title']?>"><div class="related-circle" style="background-color:<?php echo $related[$i]['bg_color']?>;background-image:url('<?php echo $related[$i]['bg_img_small']?>');"></div></a>
 				</div>
 			<?php 
 					endfor;

@@ -13,7 +13,7 @@ if($_COOKIE[$auth['cookie']])
 <html>
 <head>
 	<title>Aditya Mukherjee</title>
-	<link rel="stylesheet" type="text/css" href="./tb/style/global.less" />
+
 	<link rel="stylesheet" type="text/css" href="./tb/all/style/ideas.less" />
 
 	<?php if($LOGGED): ?>

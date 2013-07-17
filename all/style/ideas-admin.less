@@ -1,3 +1,16 @@
+// variable definitions
+
+@green: #27AE60;
+@lgreen: #2ECC71;
+
+// mixins
+
+.animate(){
+	transition-duration: 0.4s;
+}
+
+// *******************
+
 .ideas-selector-wrap {
 	position:fixed;
 	top:0;
@@ -26,13 +39,25 @@
 			width:400px;
 		}
 
-		input[type='text'] {
+		input[type='text'],
+		textarea {
 			width:350px;
-			padding:4px 6px;
-			font:10pt "pt-sans", sans-serif;
+			padding:5px 7px;
+			font:11pt "freight-sans-pro", sans-serif;
 			background-color:#ffffff;
-			border:1px solid #dddddd;
-			border-radius:5px;
+			border:2px solid #dddddd;
+			border-radius:3px;
+
+			.animate();
+
+			&:focus {
+				outline: 0;
+				border-color: @green;
+			}
+		}
+
+		textarea {
+			height: 53px;
 		}
 
 		.preview {
@@ -50,25 +75,29 @@
 		border-radius:0 0 10px 10px;
 
 		.btn {
-			border:1px solid #cccccc;
-			padding:3px 6px;
-			font:10pt "pt-sans", sans-serif;
-			background-color:#ffffff;
+			padding: 4px 10px;
+			font:10pt "proxima-nova", sans-serif;
+			background-color: #eee;
 			color:#000000;
 			float:right;
 			margin-left:5px;
 			border-radius:5px;
-			background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0.27,#e3e3e3),color-stop(0.82,#fafafa));
+
+			.animate();
 		}
 
 		.btn:hover {
+			background-color: #fff;
 			cursor:pointer;
-			background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0.82,#fafafa) color-stop(0.27,#e3e3e3));
 		}
 
 		.btn.save {
-			background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0.82,#8dd143),color-stop(0.27,#6b9e33));
+			background-color: @green;
 			color:#ffffff;
+
+			&:hover {
+				background-color: @lgreen;
+			}
 		}
 	}
 }

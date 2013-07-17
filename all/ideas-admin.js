@@ -20,6 +20,12 @@ $(document).ready(function(){
 				),
 				$("<tr></tr>").append(
 					$("<td></td>").append(
+						$("<textarea class='idea-desc' placeholder='Slightly longer description'></textarea>")
+					),
+					$("<td></td>")
+				),
+				$("<tr></tr>").append(
+					$("<td></td>").append(
 						$("<input type='text' class='idea-bg-img' placeholder='Background Image (optional)'></input>").on("blur", function(){
 							var url = url_pathinfo($(this).val());
 							$(".idea-img").css("background-image", "url('http://imgur.com/"+ url[1] +"s."+ url[2] +"')");
@@ -46,10 +52,12 @@ $(document).ready(function(){
 		$contr.append(
 			$("<div class='btn save'>Create</div>").on("click", function(){
 				var title = $(".top-cont .idea-title").val();
+				var desc = $(".top-cont .idea-desc").val();
 				var img	  = $(".top-cont .idea-bg-img").val();
 				var color = $(".top-cont .idea-bg-color").val();
 				$.post("/tb/all/post.idea.php", {
 					title:	title,
+					desc:	desc,
 					image:	img,
 					color:	color
 				}, function(data){
