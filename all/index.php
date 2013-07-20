@@ -15,10 +15,10 @@ if($_COOKIE[$auth['cookie']])
 	<title>Aditya Mukherjee</title>
 
 	<link rel="stylesheet" type="text/css" href="./tb/all/style/ideas.less" />
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 	<?php if($LOGGED): ?>
 		<link rel="stylesheet" type="text/css" href="./tb/all/style/ideas-admin.less" />
-		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 	<?php endif; ?>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -59,13 +59,45 @@ if($_COOKIE[$auth['cookie']])
 			<span class="label">Aditya Mukherjee</span>
 		</div>
 		<div class="nav">
-			<?php if($LOGGED): ?><a href="#" class="new-idea">New Idea</a><?php endif; ?>
+			<?php if($LOGGED): ?>
+				<a href="/longform/0">New Longform</a>
+				<a href="#" class="new-idea">New Idea</a>
+			<?php endif; ?>
 			<a href="/" class="active">Home</a>
 			<!-- <a class="disabled" href="./about">About</a> -->
 		</div>
 		<div class="clear"></div>
 	</div>
 	<div class="body">
+		<div class="woi-label">Web<span>of</span>Ideas</div>
+		<div class="longform">
+			<div class="trans-arrow-back"></div>
+			<div class="trans-arrow"></div>
+			<h3>Longform</h3>
+			<div class="longform-list">
+			<?php
+				$lf = $db->query("SELECT * FROM post WHERE `iid`=0 ORDER BY `pid` DESC");
+				while($l = $lf->fetch_assoc()):
+			?>
+				<div class="lf-post">
+					<div class="lf-post-title"><a href="http://adityamukherjee.com/longform/<?php echo $l['pid'] ?>"><?php echo htmlentities($l['title']) ?></a></div>
+					<div class="lf-post-meta">
+					<a href="http://adityamukherjee.com/longform/<?php echo $l['pid'] ?>"><?php echo strftime("%d %B, &rsquo;%y", strtotime($l['created'])) ?></a>
+						<span class="sep">+</span>
+						<span class="ttr">
+							<span class="icon-time"></span>
+							<?
+								$rawtext = count(explode(" ", $l['body']));
+								echo round($rawtext/200, 0) . " min";
+							?>
+						</span>
+					</div>
+				</div>
+			<?php
+				endwhile;
+			?>
+			</div>
+		</div>
 
 	<div class="old-ideas hide">
 	<?php
@@ -103,10 +135,12 @@ if($_COOKIE[$auth['cookie']])
 
 	</div>
 	<div class="feet">
-		<div class="copy"><span class="cpy-label">Copyright &copy; 2013</span> <span>+</span> Aditya Mukherjee <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a> <span>+</span> <a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
+		<div class="copy">
+			<span class="cpy-label">Copyright &copy; 2013</span> Aditya Mukherjee <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="http://adityamukherjee.com/rss/<?php echo $idea['iid']; ?>" class="icon-rss"></a> <span>+</span>
+<a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a> <span>+</span> <a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
 		</div>
-		<div class="nav">
-			<a href="http://adityamukherjee.com/rss/"><span class="icon-rss"></span></a>
+		<div class="right">
+			Designed with <span>&hearts;</span> in New Delhi
 		</div>
 		<div class="clear"></div>
 	</div>

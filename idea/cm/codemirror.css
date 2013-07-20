@@ -2,17 +2,19 @@
 
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
+  /*
   font-family: monospace;
-  font-family: "freight-sans-pro";
-  font-style: italic;
-  line-height: 19px;
   height: 300px; 
+  */
+  font-family: "interface";
   min-height: 24px;
   height: auto;
 }
 .CodeMirror-scroll {
   /* Set scrolling behaviour here */
+  /*
   overflow: auto;
+  */
   overflow-y: hidden;
   overflow-x: auto;
 }

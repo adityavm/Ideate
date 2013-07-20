@@ -1,0 +1,171 @@
+@import "/tb/style/global.less";
+
+@red: #C0392B;
+@lred: #E74C3C;
+
+.animate(){
+	transition-duration: 0.3s;
+}
+
+::selection {
+	background-color: #fff;
+	color: @red;
+}
+
+body {
+	background-color: @red;
+}
+
+.body {
+	.post {
+		font: 300 16px "brandon-grotesque", sans-serif;
+		color: #fff;
+		min-height: 100vh;
+
+		.post-meta {
+			text-align: center;
+			padding: 20px 0;
+			font: 300 11pt "proxima-nova", sans-serif;
+
+			a {
+				color: #fff;
+				text-decoration: none;
+				text-transform: uppercase;
+			}
+
+			.sep {
+				color: rgba(255,255,255,0.2);
+			}
+
+			.ttr {
+				.icon-book { }
+			}
+		}
+
+		.post-title-wrap {
+			font: 29pt/1.2em "brandon-grotesque", sans-serif;
+			background-color: #fff;
+			color: #333;
+			padding: 25px 0;
+			text-align: center;
+
+			.post-title {
+				width: 600px;
+				margin: 0 auto;
+			}
+		}
+
+		.post-body {
+			width: 500px;
+			margin: 0 auto;
+			padding: 20px 0;
+
+			.animate();
+
+			blockquote {
+				font-style: italic;
+				border-left: 3px solid @lred;
+				color: lighten(@lred, 35%);
+				margin: 0; padding: 0 20px;
+
+				p {
+					&:first-child { margin-top: 0; }
+					&:last-child { margin-bottom: 0; }
+				}
+			}
+
+			pre {
+				background-color: #ECF0F1;
+				padding: 10px 20px;
+				border-radius: 5px;
+				box-shadow: inset rgba(0,0,0,0.5) 1px 1px 10px;
+
+				code {
+					font-size: 10pt;
+					color: #333;
+				}
+			}
+
+			cite {
+				&.aside {
+					font-size: 14px;
+					line-height: 1.2em;
+					width: 100px;
+					position: absolute;
+					border-top: 1px solid @lred;
+					padding-top: 5px;
+
+					&.left { left: -110px; }
+				}
+			}
+
+			img {
+				width: 600px;
+			}
+
+			hr {
+				border: 0;
+				border-top: 3px dotted #FFF;
+				margin: 2em auto;
+				width: 15px;
+			}
+
+			h2 {
+				font: 16pt "proxima-nova", sans-serif;
+				text-transform: uppercase;
+				margin: 1.3em 0 0.3em;
+			}
+
+			p {
+				position: relative;
+
+				a {
+					color: #fff;
+
+					&:hover {
+						text-decoration: none;
+					}
+				}
+
+				strong {
+					font-weight: 400;
+				}
+
+				&:first-child {
+					font-size: 16pt;
+					font-style: italic;
+					margin-top: 0;
+				}
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
+			h2 + p {
+				margin-top: 0.3em;
+			}
+		}
+	}
+
+	.sep {
+		width: 20px;
+		margin: 20px auto;
+		text-align: center;
+		padding: 10px 0;
+
+		.outer-circle {
+			display: inline-block;
+			border: 2px solid #fff;
+			border-radius: 100%;
+			padding: 0 6px 2px;
+
+			.inner-circle {
+				display: inline-block;
+				background-color: #fff;
+				border-radius: 100%;
+				width: 8px; height: 8px;
+			}
+		}
+	}
+}

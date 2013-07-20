@@ -13,8 +13,8 @@ if($_COOKIE[$auth['cookie']])
 # get idea ID from URL
 $iid = $_GET['id'];
 if(ctype_digit($iid)){
-	$idea = 	$db->_query("SELECT * FROM idea WHERE `iid`=$iid");
-	$posts = 	$db->query("SELECT * FROM post WHERE `iid`=$iid");
+	$idea = 	$db->_query("SELECT * FROM idea WHERE `iid`=$iid LIMIT 1");
+	$posts = 	$db->query("SELECT * FROM post WHERE `iid`=$iid ORDER BY `pid`");
 } else
 	header("Location: /");
 
@@ -77,54 +77,69 @@ if($LOGGED){
 		}
 	</script>
 
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
 	<?php if($LOGGED){ ?>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="/tb/idea/cm/codemirror.js"></script>
 		<script src="/tb/idea/cm/markdown.js"></script>
 		<script src="/tb/idea/idea-admin.js" type="text/javascript"></script>
 	<? } ?>
 
+	<script src="/tb/idea/idea.js" type="text/javascript"></script>
+
 	<script type="text/javascript" src="//use.typekit.net/rau5wab.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<script type="text/javascript">
+		try{
+			Typekit.load({
+				"active": function(){ 
+					$('p a, p:not(:has(a))')
+						.ligature('ffi', '&#xfb03;')
+						.ligature('ffl', '&#xfb04;')
+						.ligature('ff', '&#xfb00;')
+						.ligature('fi', '&#xfb01;')
+						.ligature('fl', '&#xfb02;');
+					}
+			});
+		}catch(e){}
+	</script>
 </head>
 <body>
 	<div class="head">
-		<div class="bar">
-			<div class="title">
-				<img class="icon" src="https://si0.twimg.com/profile_images/2745465978/5999ce441d4251bcdd79159b5d75f359.png" />
-				<span class="label">Aditya Mukherjee</span>
-			</div>
-			<div class="nav">
-				<a href="/">Home</a>
-				<!-- <a class="disabled" href="./about">About</a> -->
-			</div>
-			<div class="clear"></div>
+		<div class="title">
+			<img class="icon" src="https://si0.twimg.com/profile_images/2745465978/5999ce441d4251bcdd79159b5d75f359.png" />
+			<span class="label">Aditya Mukherjee</span>
 		</div>
-		<div class="banner banner-custom">
-			<?php
-				if ($idea['title']):
-			?>
-				<div class="title-wrap">
-					<div class="title"><? echo $idea['title'] ?></div><br/>
-					<div class="desc"><? echo $idea['desc'] ?></div>
-					<div class="clear"></div>
-			<?php
-				$related = array();
-				$rel = $db->query("SELECT `rel_to` FROM rels WHERE `iid`={$idea['iid']}");
-				while($rid = $rel->fetch_assoc()):
-					$re = $db->_query("SELECT `iid`,`title`,`bg_img`,`bg_img_small`,`bg_color` FROM idea WHERE `iid`={$rid['rel_to']}");
-					$related[] = $re;
-				endwhile;
-				if(count($related)):
-					for($i=0;$i<count($related);$i++):
-			?>
-				<a href="./<?php echo $related[$i]['iid']?>" title="<?php echo $related[$i]['title']?>"><div class="related-circle" style="background-color:<?php echo $related[$i]['bg_color']?>;background-image:url('<?php echo $related[$i]['bg_img_small']?>');"></div></a>
-				</div>
-			<?php 
-					endfor;
-				endif;
-				endif;
-			?>
+		<div class="nav">
+			<a href="/">Home</a>
+			<!-- <a class="disabled" href="./about">About</a> -->
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="banner banner-custom">
+		<?php
+			if ($idea['title']):
+		?>
+			<div class="title-wrap">
+				<div class="title"><? echo $idea['title'] ?></div><br/>
+				<?php if($idea['desc']){ ?><div class="desc"><? echo $idea['desc'] ?></div><?php } ?>
+				<div class="clear"></div>
+		<?php
+			$related = array();
+			$rel = $db->query("SELECT `rel_to` FROM rels WHERE `iid`={$idea['iid']}");
+			while($rid = $rel->fetch_assoc()):
+				$re = $db->_query("SELECT `iid`,`title`,`bg_img`,`bg_img_small`,`bg_color` FROM idea WHERE `iid`={$rid['rel_to']}");
+				$related[] = $re;
+			endwhile;
+			if(count($related)):
+				for($i=0;$i<count($related);$i++):
+		?>
+			<a href="./<?php echo $related[$i]['iid']?>" title="<?php echo $related[$i]['title']?>"><div class="related-circle" style="background-color:<?php echo $related[$i]['bg_color']?>;background-image:url('<?php echo $related[$i]['bg_img_small']?>');"></div></a>
+			</div>
+		<?php 
+				endfor;
+			endif;
+			endif;
+		?>
 		</div>
 	</div>
 	<div class="sep">
@@ -164,7 +179,7 @@ if($LOGGED){
 						</div>
 						<?php if($LOGGED): ?>
 							<div class="edit-btns">
-								<a class="edit-post icon-pencil" data-pid="<?php echo $post['pid'] ?>"></a>
+								<a class="edit-post icon-pencil" data-pid="<?php echo $post['pid'] ?>"><span>Edit post</span></a>
 							</div>
 						<?php endif; ?>
 							<div class="post-body">
@@ -213,11 +228,12 @@ if($LOGGED){
 		?>
 	</div>
 	<div class="feet">
-		<div class="copy"><span class="cpy-label">Copyright &copy; 2013</span> <span>+</span> Aditya Mukherjee <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a> <span>+</span> <a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
+		<div class="copy">
+			<span class="cpy-label">Copyright &copy; 2013</span> Aditya Mukherjee <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="http://adityamukherjee.com/rss/<?php echo $idea['iid']; ?>" class="icon-rss"></a> <span>+</span>
+<a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a> <span>+</span> <a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
 		</div>
-		<div class="nav">
-			<a href="http://adityamukherjee.com/rss/<?php echo $idea['iid']; ?>"><span class="icon-rss"></span></a>
-			<a href="/">Home</a>
+		<div class="right">
+			Designed with <span>&hearts;</span> in New Delhi
 		</div>
 		<div class="clear"></div>
 	</div>

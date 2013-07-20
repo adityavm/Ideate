@@ -1,11 +1,11 @@
 function drawHome(){
 	var innerW = $(window).get(0).innerWidth;
 	var innerH = $(window).get(0).innerHeight;
-	var paper = Raphael($(".body").get(0),innerW,innerH-60);
+	var paper = Raphael($(".body").get(0),innerW,innerH-90);
 	var origin = {x:innerW/2, y:innerH/2-30};
 
 	var n = ideas.length;
-	var r = 250;
+	var r = innerH/2 - 100;
 	var rad = 45;//(Math.PI*r - 80*n)/n;
 	var ang = 0;
 	var coords = {};
@@ -45,7 +45,7 @@ function drawHome(){
 				console.log(src_c, dst_c);
 				
 				p = paper.path("M"+src_c.x+","+src_c.y+"L"+dst_c.x+","+dst_c.y);
-				p.attr("stroke","#888");
+				p.attr("stroke","#bbb");
 				p.attr("stroke-width", Math.min(v,4));
 				p.attr("stroke-dasharray","- ");
 				
@@ -60,7 +60,6 @@ function drawHome(){
 		console.log(idea);
 
 		var c = paper.circle(coords[idea.iid].x, coords[idea.iid].y, rad)
-			c.attr("stroke", "rgba(0,0,0,0.5)");
 			c.attr("fill", idea.bg_color);
 
 		if(idea.bg_img)
@@ -73,8 +72,8 @@ function drawHome(){
 			})(idea.iid)
 
 		var t = paper.text(coords[idea.iid].x, (coords[idea.iid].y+rad+15), idea.title);
-			t.attr("fill", "#333");
-			t.attr("font", "400 10pt 'proxima-nova', sans-serif");
+			t.attr("fill", "#666");
+			t.attr("font", "400 15px 'brandon-grotesque', sans-serif");
 			t.click(function(){
 				top.window.location = "../idea/"+idea.iid;
 			});
@@ -86,7 +85,7 @@ function drawHome(){
 
 $(document).ready(function(){
 	$(".body").css({
-		"height": (window.innerHeight - 60) + "px",
+		"height": (window.innerHeight - 61) + "px",
 		"width":  (window.innerWidth) + "px"
 	});
 	drawHome();

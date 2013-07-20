@@ -37,6 +37,7 @@ function postForm(id){
 
 	// tag related ideas to this post
 	var $tag = $("<a class='icon-tag'></a>");
+		$tag.append( $("<span>Tag other ideas</span>") );
 		$tag.on("click", function(){
 			var tagged = [];
 
@@ -100,10 +101,12 @@ function postForm(id){
 		});
 	// save this post
 	var $save = $("<a class='icon-ok'></a>");
+		$save.append( $("<span>Save post</span>") );
 		$save.on("click", function(){
 			$.post("/tb/idea/post.post.php", {
 				id: id,
 				iid: idea.id,
+				title: "",
 				text: $.trim($text.data("cm-ed").getValue()),
 				link: $link.val()
 			}, function(ret){
@@ -122,6 +125,7 @@ function postForm(id){
 						$("<div class='post' id='#"+ ret.pid +"'></div>").append(
 							$("<div class='edit-btns'></div>").append(
 								$("<a class='edit-post icon-pencil' data-pid='"+ ret.pid +"'></a>")
+								 .append( $("<span>Edit post</span>") )
 								 .on("click", editButtonHandler)
 							),
 							$("<div class='post-body'></div>").append(
@@ -136,6 +140,7 @@ function postForm(id){
 		});
 	// cancel all edits to this post
 	var $canc = $("<a class='icon-remove'></a>");
+		$canc.append( $("<span>Discard changes</span>") );
 		$canc.on("click", function(){
 			$form.fadeOut("fast", function(){
 				$("#"+id+" .post-body").show();
