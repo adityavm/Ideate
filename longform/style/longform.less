@@ -1,11 +1,4 @@
-@import "/tb/style/global.less";
-
-@red: #C0392B;
-@lred: #E74C3C;
-
-.animate(){
-	transition-duration: 0.3s;
-}
+@import "../../style/global";
 
 ::selection {
 	background-color: #fff;
@@ -51,7 +44,7 @@ body {
 			box-shadow: inset rgba(0,0,0,0.2) 0 4px 10px;
 			position: relative;
 
-			transition-duration: 0.3s;
+			.animate(0.3s);
 
 			.post-title {
 				width: 600px;

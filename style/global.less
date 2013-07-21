@@ -1,12 +1,15 @@
 // variable definitions
 
+@red: #c0392b;
+@lred: #E74C3C;
+@orange: #F39C12;
 @green: #27AE60;
 @lgreen: #2ECC71;
 
 // mixins
 
-.animate(){
-	transition-duration: 0.4s;
+.animate(@t: 0.4s){
+	transition-duration: @t;
 }
 
 // globals

@@ -1,13 +1,4 @@
-// variable definitions
-
-@green: #27AE60;
-@lgreen: #2ECC71;
-
-// mixins
-
-.animate(){
-	transition-duration: 0.4s;
-}
+@import "../../style/global";
 
 /* ************************ */
 
@@ -19,7 +10,7 @@
 	z-index:2;
 	background-color:rgba(0,0,0,0.5);
 	border-radius:5px;
-	transition-duration:0.3s;
+	.animate(0.3s);
 
 	a {
 		padding:3px 5px 4px;

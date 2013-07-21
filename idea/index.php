@@ -87,7 +87,7 @@ if($LOGGED){
 
 	<script src="/tb/idea/idea.js" type="text/javascript"></script>
 
-	<script type="text/javascript" src="//use.typekit.net/rau5wab.js"></script>
+	<script type="text/javascript" src="//use.typekit.net/uit4mor.js"></script>
 	<script type="text/javascript">
 		try{
 			Typekit.load({
@@ -229,7 +229,7 @@ if($LOGGED){
 	</div>
 	<div class="feet">
 		<div class="copy">
-			<span class="cpy-label">Copyright &copy; 2013</span> Aditya Mukherjee <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="http://adityamukherjee.com/rss/<?php echo $idea['iid']; ?>/" class="icon-rss"></a> <span>+</span>
+			<span class="cpy-label">Copyright &copy; 2013</span> <a href="/about/">Aditya Mukherjee</a> <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="/rss/<?php echo $idea['iid']; ?>/" class="icon-rss"></a> <span>+</span>
 <a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a> <span>+</span> <a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
 		</div>
 		<div class="right">

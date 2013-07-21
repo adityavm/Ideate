@@ -1,9 +1,4 @@
-
-@red: #c0392b;
-@lred: #E74C3C;
-@orange: #F39C12;
-@green: #27AE60;
-@lgreen: #2ECC71;
+@import "../../style/global";
 
 .CodeMirror {
 	width: 520px;
@@ -16,7 +11,7 @@
 			a { cursor: pointer; }
 
 			.edit-post {
-				transition-duration: 0.3s;
+				.animate(0.3s);
 
 				&.working { background-color: @orange; color: #fff; }
 			}
@@ -25,7 +20,7 @@
 				background-color: @green;
 				color: #fff;
 				
-				transition-duration: 0.3s;
+				.animate(0.3s);
 
 				&:hover {
 					background-color: @lgreen;
@@ -35,7 +30,7 @@
 			.cancel-post { 
 				display: none;
 
-				transition-duration: 0.3s;
+				.animate(0.3s);
 				
 				&.confirm { 
 					background-color: @red; color: #fff;
@@ -63,7 +58,7 @@
 				cursor: pointer;
 				display: none;
 				
-				transition-duration: 0.2s;
+				.animate(0.2s);
 
 				&.active {
 					display: block;
@@ -107,7 +102,7 @@
 			font-weight: 400;
 			opacity: 1;
 
-			transition-duration: 0.3s;
+			.animate(0.3s);
 
 			&.hide {
 				opacity: 0;

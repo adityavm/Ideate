@@ -1,0 +1,119 @@
+@import "../../style/global";
+
+body { 
+	background-color: #222;
+	color: #aaa;
+}
+
+abbr { 
+	font-size: 120%; 
+	text-transform: lowercase;
+	font-variant: small-caps; 
+}
+
+a, a:visited	{ color:#ddd; text-decoration: none; }
+a:hover		{ color:#eee; text-decoration: underline; }
+
+#post {
+	width: 1024px; margin: 0 auto;
+
+	.body { 
+		font: 300 16px "interface",sans-serif; 
+		line-height: 1.4em; 
+		float: left; 
+		width: 572px;
+		margin-left: 1px; margin-right: 40px;
+
+		a:hover	{ color:#eee; text-decoration:underline; border-bottom:0; }
+		
+		.sh { 
+			margin-bottom: 0.9em;
+			text-transform: uppercase;
+			font-size: 85%; font-family: "Helvetica Neue", sans-serif; font-weight: normal; 
+			color: #777;
+		}
+
+		.sc { 
+			text-transform:uppercase;
+			font-size:85%;
+		}
+	}
+
+	.resume {
+		float: left; width: 170px;
+		font: 14px "brandon-grotesque", serif;
+		margin-top: 5px;
+
+		h4 {
+			font-size: 12px;
+			font-family: "brandon-grotesque", sans-serif;
+			font-weight: 500;
+			text-transform: uppercase;
+			color: #888;
+		}
+
+		ul {
+			margin: 0; padding: 0;
+			border-left: 1px solid #282828;
+
+			li {
+				list-style: none;
+				margin-bottom: 5px;
+				padding-left: 12px;
+				color: #666;
+
+				&:before {
+					content: "+ ";
+					color: #444;
+					margin-left: -16px; margin-right: 5px;
+				}
+
+				span {
+					color: #333;
+					font-size: 11px;
+					display: block;
+				}
+
+				&.present {
+					color: #eee;
+					
+					span { color: #666; }
+				}
+			}
+		}
+	}
+
+
+	.elsewhere	{ 
+		border-bottom :2px solid #444; 
+		margin: 15px 0 0 40px; 
+		float: left; 
+		padding-bottom: 20px; 
+		background-color: #333;
+
+		.mugshot { 
+			background: transparent url('/tb/about/mug.png') no-repeat scroll -200px -25px; 
+			width:200px; height:300px; margin-bottom:30px;
+		}
+
+		h6	{ 
+			font-family: "dejarip-1","dejarip-2",sans-serif;
+			text-transform: uppercase;
+			font-weight: normal;
+			margin: 5px 0 0 30px;
+		}
+
+		ul 	{ 
+			padding-left: 30px; margin-top: 5px;
+			
+			li{ 
+				list-style: none;
+				margin-bottom: 3px;
+				
+				a { font-size: 8pt; font-family: "brandon-grotesque", sans-serif; text-transform: uppercase; }
+			}
+		}
+	}
+}
+
+#copyright { background-color: #151515; }
