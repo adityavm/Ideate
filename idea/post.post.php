@@ -8,17 +8,17 @@ $db = new DB();
 $return = array();
 
 if($_POST['id']){
-	$body = addslashes($_POST['text']);
+	$body = addslashes($_POST['body']);
 	$upd = $db->query("UPDATE post SET `body`='{$body}', `link`='{$_POST['link']}' WHERE `pid`={$_POST['id']}");
 	if($upd){
-		$return['html'] = SmartyPants(Markdown($_POST['text']));
-		$return['raw']	= $_POST['text'];
+		$return['html'] = SmartyPants(Markdown($_POST['body']));
+		$return['raw']	= $_POST['body'];
 		$return['link']	= $_POST['link'];
 	} else {
 		$return['error'] = mysql_error();
 	}
 } else {
-	$body = addslashes($_POST['text']);
+	$body = addslashes($_POST['body']);
 	$crea = strftime("%Y-%m-%d %H:%M:%S", (time()+60*60*5+60*30));
 	$new = $db->query("INSERT INTO post (`iid`,`created`,`body`,`link`) VALUES ({$_POST['iid']}, '$crea', '$body', '{$_POST['link']}') ");
 	if($new){
