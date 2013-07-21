@@ -106,8 +106,7 @@ function postForm(id){
 			$.post("/tb/idea/post.post.php", {
 				id: id,
 				iid: idea.id,
-				title: "",
-				text: $.trim($text.data("cm-ed").getValue()),
+				body: $.trim($text.data("cm-ed").getValue()),
 				link: $link.val()
 			}, function(ret){
 				if(id){ //existing post

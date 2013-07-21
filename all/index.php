@@ -73,10 +73,11 @@ if($_COOKIE[$auth['cookie']])
 		<div class="longform">
 			<div class="trans-arrow-back"></div>
 			<div class="trans-arrow"></div>
+			<hr class="stitch" />
 			<h3>Longform</h3>
 			<div class="longform-list">
 			<?php
-				$lf = $db->query("SELECT * FROM post WHERE `iid`=0 ORDER BY `pid` DESC");
+				$lf = $db->query("SELECT * FROM longform ORDER BY `pid` DESC");
 				while($l = $lf->fetch_assoc()):
 			?>
 				<div class="lf-post">

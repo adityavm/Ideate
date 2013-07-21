@@ -13,7 +13,7 @@ if($_COOKIE[$auth['cookie']])
 # get post ID from URL
 $pid = $_GET['id'];
 if($pid == 0 || ctype_digit($pid)){
-	$post = $db->_query("SELECT * FROM post WHERE `pid`={$pid}");
+	$post = $db->_query("SELECT * FROM longform WHERE `pid`={$pid}");
 } else
 	header("Location: /");
 
@@ -84,8 +84,10 @@ if($LOGGED){
 			</div>
 			<div class="nav">
 			<?php if($LOGGED): ?>
-				<a href="#" class="edit-post" data-pid="<?php echo $post['pid']?>">Edit</a>
-				<a href="#" class="save-post" data-pid="<?php echo $post['pid']?>">Save</a>
+				<a class="edit-post" data-pid="<?php echo $post['pid']?>">Edit</a>
+
+				<a class="cancel-post">Cancel</a>
+				<a class="save-post" data-pid="<?php echo $post['pid']?>">Save</a>
 			<? endif; ?>
 				<a href="/">Home</a>
 			</div>
@@ -111,7 +113,13 @@ if($LOGGED){
 					?>
 				</span>
 			</div>
-			<div class="post-title-wrap"><div class="post-title"><?php echo $post['title']; ?></div></div>
+			<div class="post-title-wrap <?php if($post['cover']){ ?>post-cover<?php } ?>" data-cover="<?php echo $post['cover'] ?>" style="background-image:url('<?php echo $post['cover']?>');">
+				<?php if($LOGGED): ?>
+					<span class="edit-cover-btn icon-picture"></span>
+				<?php endif; ?>
+				<div class="post-title"><?php echo $post['title']; ?></div>
+				<div class="post-cover-text <?php echo ($post['cover_text']) ? "" : "hide" ?>"><?php echo SmartyPants(Markdown($post['cover_text'])); ?></div>
+			</div>
 			<div class="post-body">
 				<div class="text">
 					<?php 
@@ -130,7 +138,7 @@ if($LOGGED){
 	</div>
 	<div class="feet">
 		<div class="copy">
-			<span class="cpy-label">Copyright &copy; 2013</span> Aditya Mukherjee <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="http://adityamukherjee.com/rss/0" class="icon-rss"></a> <span>+</span>
+			<span class="cpy-label">Copyright &copy; 2013</span> Aditya Mukherjee <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="http://adityamukherjee.com/rss/longform/" class="icon-rss"></a> <span>+</span>
 <a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a> <span>+</span> <a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
 		</div>
 		<div class="right">

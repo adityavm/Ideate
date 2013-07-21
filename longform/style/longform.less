@@ -18,7 +18,7 @@ body {
 
 .body {
 	.post {
-		font: 300 16px "brandon-grotesque", sans-serif;
+		font: 300 18px "brandon-grotesque", sans-serif;
 		color: #fff;
 		min-height: 100vh;
 
@@ -48,10 +48,42 @@ body {
 			color: #333;
 			padding: 25px 0;
 			text-align: center;
+			box-shadow: inset rgba(0,0,0,0.2) 0 4px 10px;
+			position: relative;
+
+			transition-duration: 0.3s;
 
 			.post-title {
 				width: 600px;
 				margin: 0 auto;
+			}
+
+			.post-cover-text {
+				background-color: rgba(0,0,0,0.5);
+				display: inline-block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				font: italic 300 10pt "brandon-grotesque", sans-serif;
+				color: #fff;
+				padding: 2px 4px;
+				border-radius: 0 0 5px 0;
+
+				&.hide { display: none; }
+				
+				p { margin: 0; }
+				a { color: #fff; }
+			}
+
+			&.post-cover {
+				padding: 350px 0 0;
+				background-size: cover;
+
+				.post-title {
+					padding: 20px;
+					background-color: rgba(0,0,0,0.7);
+					color: #fff;
+				}
 			}
 		}
 
@@ -88,7 +120,7 @@ body {
 
 			cite {
 				&.aside {
-					font-size: 14px;
+					font-size: 15px;
 					line-height: 1.2em;
 					width: 100px;
 					position: absolute;
@@ -132,7 +164,7 @@ body {
 				}
 
 				&:first-child {
-					font-size: 16pt;
+					font-size: 24px;
 					font-style: italic;
 					margin-top: 0;
 				}

@@ -2,10 +2,10 @@ function drawHome(){
 	var innerW = $(window).get(0).innerWidth;
 	var innerH = $(window).get(0).innerHeight;
 	var paper = Raphael($(".body").get(0),innerW,innerH-90);
-	var origin = {x:innerW/2, y:innerH/2-30};
+	var origin = {x:innerW/2, y:innerH/2-53};
 
 	var n = ideas.length;
-	var r = innerH/2 - 100;
+	var r = innerH/2 - 120;
 	var rad = 45;//(Math.PI*r - 80*n)/n;
 	var ang = 0;
 	var coords = {};

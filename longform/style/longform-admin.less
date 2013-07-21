@@ -1,16 +1,20 @@
 
+@red: #c0392b;
+@lred: #E74C3C;
 @orange: #F39C12;
 @green: #27AE60;
 @lgreen: #2ECC71;
 
 .CodeMirror {
 	width: 520px;
-	font: 16px/22px "brandon-grotesque", sans-serif;
+	font: 18px/26px "brandon-grotesque", sans-serif;
 }
 
 .head {
 	.bar {
 		.nav {
+			a { cursor: pointer; }
+
 			.edit-post {
 				transition-duration: 0.3s;
 
@@ -27,6 +31,20 @@
 					background-color: @lgreen;
 				}
 			}
+
+			.cancel-post { 
+				display: none;
+
+				transition-duration: 0.3s;
+				
+				&.confirm { 
+					background-color: @red; color: #fff;
+					
+					&:hover {
+						background-color: @lred;
+					}
+				}
+			}
 		}
 	}
 }
@@ -34,15 +52,56 @@
 .body {
 	.post {
 		.post-title-wrap {
+			position: relative;
+
+			.edit-cover-btn {
+				color: #333;
+				position: absolute; right: 7px; top: 5px;
+				display: inline-block;
+				font-size: 14px;
+				opacity: 0;
+				cursor: pointer;
+				display: none;
+				
+				transition-duration: 0.2s;
+
+				&.active {
+					display: block;
+				}
+
+				&:focus {
+					outline: 0;
+				}
+			}
+
+			.post-cover-editor {
+				position: absolute; right: 5px; top: 10px;
+
+				input[type='text']{
+					padding: 3px 7px;
+					background-color: #fff; color: #333;
+					border: 2px solid @red;
+					border-radius: 5px;
+					width: 200px;
+					font: 12pt brandon-grotesque;
+
+					&:focus { outline: 0; }
+				}
+			}
+
 			.post-title:focus {
 				outline: 0;
+			}
+
+			&:hover {
+				.edit-cover-btn { opacity: 1; }
 			}
 		}
 
 		.form {
 			width: 520px; 
 			background-color: #fff; color: #333;
-			position: relative; left: 30px; top: 25px;
+			position: relative; left: 30px; top: 15px;
 			float: left;
 			padding: 8px 11px;
 			font-weight: 400;
