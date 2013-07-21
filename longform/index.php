@@ -138,7 +138,7 @@ if($LOGGED){
 	</div>
 	<div class="feet">
 		<div class="copy">
-			<span class="cpy-label">Copyright &copy; 2013</span> Aditya Mukherjee <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="http://adityamukherjee.com/rss/longform/" class="icon-rss"></a> <span>+</span>
+			<span class="cpy-label">Copyright &copy; 2013</span> <a href="/about/">Aditya Mukherjee<a/> <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="http://adityamukherjee.com/rss/longform/" class="icon-rss"></a> <span>+</span>
 <a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a> <span>+</span> <a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
 		</div>
 		<div class="right">
