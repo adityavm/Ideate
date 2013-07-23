@@ -5,8 +5,11 @@ function editButtonHandler(){
 
 	$form = postForm(pid);
 	$this.children(".post-body").add($this.children(".edit-btns")).add($this.children(".related-to")).fadeOut("fast", function(){
-		$this.append($form.fadeIn("fast"));
-		$form.find("textarea").data("cm-ed").focus();
+		$this.append($form.fadeIn("fast", function(){
+			var ed = $form.find("textarea").data("cm-ed");
+				ed.focus();
+				ed.refresh();
+		}));
 	});
 }
 
@@ -15,8 +18,11 @@ function newPostButtonHandler(){
 	$p = $(".new-post").parents("p").hide();
 	$form = postForm();
 
-	$(".body").append($form.fadeIn("fast"));
-	$form.find("textarea").data("cm-ed").focus();
+	$(".body").append($form.fadeIn("fast"), function(){
+		var ed = $form.find("textarea").data("cm-ed");
+			ed.focus();
+			ed.refresh();
+	});
 }
 
 function postForm(id){
@@ -27,13 +33,6 @@ function postForm(id){
 	var $cont = $("<div class='edit-btns'></div>");
 	var $text = $("<textarea class='edit-post-text'></textarea>").attr("placeholder", "So, what's new in \""+ idea.title +"\" today?");
 	var $link = $("<input class='edit-post-link' type='text' placeholder='/via'></input>");
-
-	if (id)
-		$.getJSON("/tb/idea/get.post.php", {id: id}, function(ret){
-			data = ret;
-			$text.data("cm-ed").setOption("value", data.raw);
-			$link.val(data.link);
-		});
 
 	// tag related ideas to this post
 	var $tag = $("<a class='icon-tag'></a>");
@@ -148,6 +147,11 @@ function postForm(id){
 				$form.remove();
 				$("p.sep").fadeIn("fast");
 			});
+
+			// delete this post from last save
+			var exLSVal = JSON.parse(localStorage["tbLastSave"]) || {};
+				exLSVal[idea.id] = null;
+				localStorage["tbLastSave"] = JSON.stringify(exLSVal);
 		});
 	$cont.append($tag, $save, $canc);
 
@@ -159,12 +163,57 @@ function postForm(id){
 		viewportMargin: Infinity,
         extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"}
 	});
+	editor.on("change", function(){
+		// save last un-finished post in localStorage
+		// this overwrites any previous unfinished post
+		var val = editor.getValue();
+		var exLSVal = JSON.parse(localStorage["tbLastSave"]) || {};
+			exLSVal[idea.id] = val;
+			localStorage["tbLastSave"] = JSON.stringify(exLSVal);
+	});
 	$text.data("cm-ed", editor);
 	$form.hide();
+
+	// if existing post
+	if (id){
+		$.getJSON("/tb/idea/get.post.php", {id: id}, function(ret){
+			data = ret;
+			$text.data("cm-ed").setOption("value", data.raw);
+			$link.val(data.link);
+		});
+	} else if(id == 0){// saved draft
+		var exLSVal = JSON.parse(localStorage["tbLastSave"]);
+		$text.data("cm-ed").setOption("value", exLSVal[idea.id]);
+	}
+
 	return $form;
 }
 
+function showDraft(){
+	// if saved post, show it above new post
+	var exLSVal = JSON.parse(localStorage["tbLastSave"]);
+		//exLSVal = JSON.parse(exLSVal);
+	if(exLSVal && exLSVal[idea.id]){
+		$(".new-post").parents("p.sep").before(
+			$("<h2>Saved Draft</h2>"),
+			$("<div class='post draft' id='0'></div>").append(
+				$("<div class='edit-btns'></div>").append(
+					$("<a class='edit-post icon-pencil'></a>").data("pid", 0).append(
+						$("<span>Edit post</span>")
+					)
+				),
+				$("<div class='post-body'></div>").append(
+					$("<div class='text'></div>").text( exLSVal[idea.id].slice(0,100) )
+				)
+			)
+		)
+	}
+}
+
 $(document).ready(function(){
+	// show saved drafts
+	showDraft();
+
 	$(".edit-post").on("click", editButtonHandler);
 	$(".new-post").on("click", newPostButtonHandler);
 });
