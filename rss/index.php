@@ -48,7 +48,7 @@ echo '<?xml version="1.0" encoding="utf-8" ?>';
 			$link = "http://adityamukherjee.com/longform/" . $o['pid'];
 		else:
 			echo substr(strip_tags($body), 0, 100), "..."; 
-			$link = "http://adityamukherjee.com/idea/" . $o['pid'];
+			$link = "http://adityamukherjee.com/idea/" . $o['iid'] . "#" . $o['pid'];
 		endif;
 	?></title>
 		<link><?php echo $link ?></link>
