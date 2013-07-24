@@ -74,6 +74,8 @@ if($LOGGED){
 
 		<?php if($pid == 0){ ?>$(document).ready(newPost);<?php } ?>
 	</script>
+
+	<script src="/tb/woopra.js" type="text/javascript"></script>
 </head>
 <body>
 	<div class="head">
