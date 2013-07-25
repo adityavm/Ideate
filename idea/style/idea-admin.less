@@ -1,6 +1,7 @@
 @import "../../style/global";
 
 .CodeMirror {
+	font-family: "chaparral-pro-display", serif;
 	line-height: normal;
 }
 
@@ -92,7 +93,7 @@ a.new-post:hover {
 }
 
 .edit-post-text {
-	font-family: "interface";
+	font-family: "chaparral-pro-display";
 	min-height: 24px;
 	width: 390px;
 }
@@ -100,7 +101,7 @@ a.new-post:hover {
 .edit-post-link {
 	width:384px;
 	padding:5px 8px;
-	font:italic 11pt "interface", sans-serif;
+	font:italic 11pt "chaparral-pro-display", serif;
 	background-color:#fafafa;
 	color:#666666;
 	border:1px solid #f5f5f5;
@@ -202,9 +203,17 @@ a.new-post:hover {
 	}
 }
 
-.post.draft {
-	.post-body .text {
-		color: #aaa;
-		font-style: italic;
+.body {
+	h2, h3 {
+		font-weight: 500;
+		font-family: "futura-pt";
+		position: relative; left: -20px;
+	}
+
+	.post.draft {
+		.post-body .text {
+			color: #aaa;
+			font-style: italic;
+		}
 	}
 }

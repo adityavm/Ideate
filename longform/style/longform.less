@@ -11,7 +11,7 @@ body {
 
 .body {
 	.post {
-		font: 300 18px "brandon-grotesque", sans-serif;
+		font: 300 21px/1.3em "chaparral-pro-display", serif;
 		color: #fff;
 		min-height: 100vh;
 
@@ -23,7 +23,6 @@ body {
 			a {
 				color: #fff;
 				text-decoration: none;
-				text-transform: uppercase;
 			}
 
 			.sep {
@@ -49,6 +48,7 @@ body {
 			.post-title {
 				width: 600px;
 				margin: 0 auto;
+				font-weight: 300;
 			}
 
 			.post-cover-text {
@@ -124,6 +124,10 @@ body {
 				}
 			}
 
+			em {
+				margin-right: 1px;//to avoid ascenders getting cut off
+			}
+
 			img {
 				width: 600px;
 			}
@@ -156,8 +160,8 @@ body {
 					font-weight: 400;
 				}
 
-				&:first-child {
-					font-size: 24px;
+				&.intro {
+					font-size: 32px;
 					font-style: italic;
 					margin-top: 0;
 				}

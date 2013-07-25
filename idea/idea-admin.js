@@ -18,11 +18,11 @@ function newPostButtonHandler(){
 	$p = $(".new-post").parents("p").hide();
 	$form = postForm();
 
-	$(".body").append($form.fadeIn("fast"), function(){
+	$(".body").append($form.fadeIn("fast", function(){
 		var ed = $form.find("textarea").data("cm-ed");
 			ed.focus();
 			ed.refresh();
-	});
+	}));
 }
 
 function postForm(id){
