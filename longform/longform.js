@@ -1,10 +1,3 @@
-// ligaturise everything (kinda)
-$.fn.ligature = function(str, lig) {
-    return this.each(function() {
-        this.innerHTML = this.innerHTML.replace(new RegExp(str, 'g'), lig);
-    });
-};
-
 // functions to run on posts on page load
 // or after we finish editing them
 $.postProcessing = function(){

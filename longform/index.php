@@ -59,18 +59,7 @@ if($LOGGED){
 
 	<script type="text/javascript" src="//use.typekit.net/rau5wab.js"></script>
 	<script type="text/javascript">
-		try{
-			Typekit.load({
-				"active": function(){ 
-					$('p a, p:not(:has(a))')
-						.ligature('ffi', '&#xfb03;')
-						.ligature('ffl', '&#xfb04;')
-						.ligature('ff', '&#xfb00;')
-						.ligature('fi', '&#xfb01;')
-						.ligature('fl', '&#xfb02;');
-					}
-			});
-		}catch(e){}
+		try{Typekit.load({});}catch(e){}
 
 		<?php if($pid == 0){ ?>$(document).ready(newPost);<?php } ?>
 	</script>

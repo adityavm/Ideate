@@ -88,20 +88,7 @@ if($LOGGED){
 	<script src="/tb/idea/idea.js" type="text/javascript"></script>
 
 	<script type="text/javascript" src="//use.typekit.net/uit4mor.js"></script>
-	<script type="text/javascript">
-		try{
-			Typekit.load({
-				"active": function(){ 
-					$('p a, p:not(:has(a))')
-						.ligature('ffi', '&#xfb03;')
-						.ligature('ffl', '&#xfb04;')
-						.ligature('ff', '&#xfb00;')
-						.ligature('fi', '&#xfb01;')
-						.ligature('fl', '&#xfb02;');
-					}
-			});
-		}catch(e){}
-	</script>
+	<script type="text/javascript">try{Typekit.load({});}catch(e){}</script>
 
 	<?php if(!$LOGGED){ ?>
 		<script src="/tb/woopra.js" type="text/javascript"></script>

@@ -12,6 +12,16 @@
 	transition-duration: @t;
 }
 
+.ligatures {
+	-moz-font-feature-settings:"liga" 1, "dlig" 1, "hlig" 1, "clig" 1; 
+	-moz-font-feature-settings:"liga=1, dlig=1, hlig=1, clig=1"; 
+	-ms-font-feature-settings:"liga" 1, "dlig" 1, "hlig" 1, "clig" 1; 
+	-o-font-feature-settings:"liga" 1, "dlig" 1, "hlig" 1, "clig" 1; 
+	-webkit-font-feature-settings:"liga" 1, "dlig" 1, "hlig" 1, "clig" 1; 
+	font-feature-settings:"liga" 1, "dlig" 1, "hlig" 1, "clig" 1;
+	text-rendering: optimizeLegibility;
+}
+
 // globals
 
 .head {
