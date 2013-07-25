@@ -99,7 +99,7 @@
 <a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a> <span>+</span> <a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
 		</div>
 		<div class="right">
-			Designed with <span>&hearts;</span> in New Delhi
+			Made with <span>&hearts;</span> in New Delhi
 		</div>
 		<div class="clear"></div>
 	</div>

@@ -103,7 +103,9 @@ if($LOGGED){
 		}catch(e){}
 	</script>
 
-	<script src="/tb/woopra.js" type="text/javascript"></script>
+	<?php if(!$LOGGED){ ?>
+		<script src="/tb/woopra.js" type="text/javascript"></script>
+	<?php } ?>
 </head>
 <body>
 	<div class="head">
@@ -235,7 +237,7 @@ if($LOGGED){
 <a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a> <span>+</span> <a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
 		</div>
 		<div class="right">
-			Designed with <span>&hearts;</span> in New Delhi
+			Made with <span>&hearts;</span> in New Delhi
 		</div>
 		<div class="clear"></div>
 	</div>
