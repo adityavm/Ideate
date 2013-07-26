@@ -64,8 +64,8 @@ if($LOGGED){
 			background-color: <?php echo $idea['bg_color'] ?>;
 		}
 
-		a,
-		a:visited {
+		.body a,
+		.body a:visited {
 			color: <?php echo $idea['bg_color'] ?>;
 		}
 	</style>
@@ -219,9 +219,15 @@ if($LOGGED){
 		?>
 	</div>
 	<div class="feet">
-		<div class="copy">
-			<span class="cpy-label">Copyright &copy; 2013</span> <a href="/about/">Aditya Mukherjee</a> <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="/rss/<?php echo $idea['iid']; ?>/" class="icon-rss"></a> <span>+</span>
-<a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a> <span>+</span> <a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
+		<div class="left">
+			<span class="cpy-label">Copyright &copy; 2013</span> <a href="/about/">Aditya Mukherjee</a> <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="/rss/<?php echo $idea['iid']; ?>/" class="icon-rss"></a>
+		</div>
+		<div class="cent">
+			<a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a>
+			<span>+</span>
+			<a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
+			<span>+</span>
+			<a href="http://instagram.com/aditya_" class="icon-instagram" target="_blank"></a>
 		</div>
 		<div class="right">
 			Made with <span>&hearts;</span> in New Delhi

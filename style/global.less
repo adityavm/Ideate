@@ -90,38 +90,49 @@
 	background:#222222;
 	color: #fff;
 
-	.copy {
+	a {
+		color:#eee;
+		text-decoration:none;
+
+		.animate(0.2s);
+
+		&:hover {
+			color: #fff;
+			text-decoration: none;
+			text-shadow: rgba(255,255,255,0.6) 0 0 4px;
+		}
+	}
+
+	span {
+		color:#666666;
+	}
+
+	.left {
 		color:#ffffff;
 		padding:8px;
-		margin:0 auto;
 		float:left;
-		width:500px;
+		width:30%;
+		text-align: left;
 
 		.cpy-label {
 			color:#aaaaaa;
 		}
+	}
 
-		span {
-			color:#666666;
-		}
-
-		a {
-			color:#eee;
-			text-decoration:none;
-
-			&:hover {
-				color: #fff;
-				text-decoration: underline;
-			}
-		}
+	.cent {
+		float: left;
+		width: 38%;
+		color: #666;
+		padding: 8px 0;
+		text-align: center;
 	}
 
 	.right {
 		float: right;
 		text-align: right;
-		width: 300px;
+		width: 30%;
 		color: #666;
-		padding: 8px 8px 0;
+		padding: 8px 8px 0 0;
 
 		span { color: darken(#ff0000, 20%); }
 	}

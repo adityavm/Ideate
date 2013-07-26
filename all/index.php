@@ -74,9 +74,7 @@ if($_COOKIE[$auth['cookie']])
 	</div>
 	<div class="body">
 		<div class="woi-label">Web<span>of</span>Ideas</div>
-		<div class="longform">
-			<div class="trans-arrow-back"></div>
-			<div class="trans-arrow"></div>
+		<div class="longform section">
 			<hr class="stitch" />
 			<h3>Longform</h3>
 			<div class="longform-list">
@@ -103,46 +101,37 @@ if($_COOKIE[$auth['cookie']])
 			?>
 			</div>
 		</div>
+		<div class="instagram section">
+			<hr class="stitch" />
+			<h3>Instagram</h3>
+			<div class="ig-photos">
+				<div class="ig-photos-row">
+				<?php
+					$ig = file_get_contents("https://api.instagram.com/v1/users/318139/media/recent/?access_token=318139.b35cfe4.2be2668bf5bf4c159e5065ed327e612b&count=8");
+					$ig = json_decode($ig, true);
+					for($i=0;$i<count($ig['data']);$i++):
+						echo ($i > 0 && $i%4 == 0) ? "</div><div class='ig-photos-row'>" : "";
 
-	<div class="old-ideas hide">
-	<?php
-		$i = 0;
-		$ideas = $db->query("SELECT `iid`,`bg_color`,`bg_img`,`title` FROM idea WHERE `closed`=0 ORDER BY `updated` DESC");
-		while($idea = $ideas->fetch_assoc()):
-			$posts = $db->_query("SELECT count(`pid`) FROM post WHERE `iid`={$idea['iid']}");
-	?>
-		<div class="idea square <?php echo ($i == 0) ? "idea-row-s" : "" ?> <?php echo ($i==3) ? "idea-row-e" : "" ?> <?php echo (!$idea['closed']) ? "open" : "" ?>" id="<?php echo $idea['iid'] ?>">
-			<a href="../idea/<?php echo $idea['iid'] ?>">
-				<div class="idea-circle" style="background-color:<?php echo $idea['bg_color'] ?>;<?php echo ($idea['bg_img']) ? "background-image:url('{$idea['bg_img']}')" : "" ?>"></div>
-				<div class="idea-title"><?php echo $idea['title'] ?></div>
-				<?php
-					$count = $posts['count(`pid`)'];
-					if($count):
+						$p = $ig['data'][$i];
+						echo "<a href='{$p['link']}' target='_blank'><img src='{$p['images']['thumbnail']['url']}' /></a>";
+					endfor;
 				?>
-						<div class="pcou">(<?php echo ($count == 1) ? "1 update" : "$count updates" ?>)</div>
-				<?php
-					endif;
-				?>
-			</a>
+				</div>
+			</div>
 		</div>
-	<?php
-			$i=++$i%4;
-		endwhile;
-		if($LOGGED):
-	?>
-		<div class="idea square new-idea">
-			<div class="idea-circle icon-plus-sign"></div>
-			<div class="idea-title">New Idea</div>
-		</div>
-	<?php endif; ?>
-	<div class="clear"></div>
 	</div>
 
 	</div>
 	<div class="feet">
-		<div class="copy">
-			<span class="cpy-label">Copyright &copy; 2013</span> <a href="/about/">Aditya Mukherjee</a> <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="/rss/<?php echo $idea['iid']; ?>" class="icon-rss"></a> <span>+</span>
-<a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a> <span>+</span> <a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
+		<div class="left">
+			<span class="cpy-label">Copyright &copy; 2013</span> <a href="/about/">Aditya Mukherjee</a> <span>+</span> <a href="mailto:hi@adityamukherjee.com">Say Hi!</a> <span>+</span> <a href="/rss/<?php echo $idea['iid']; ?>" class="icon-rss"></a>
+		</div>
+		<div class="cent">
+			<a href="http://twitter.com/aditya" class="icon-twitter" target="_blank"></a>
+			<span>+</span>
+			<a href="http://github.com/adityavm" class="icon-github" target="_blank"></a>
+			<span>+</span>
+			<a href="http://instagram.com/aditya_" class="icon-instagram" target="_blank"></a>
 		</div>
 		<div class="right">
 			Made with <span>&hearts;</span> in New Delhi
