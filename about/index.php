@@ -73,6 +73,7 @@
 				<li><a href="http://aditya.attico.us">Atticous</a></li>
 				<li><a href="http://twitter.com/aditya">Twitter</a></li>
 				<li><a href="https://github.com/adityavm">Github</a></li>
+				<li><a href="https://instagram.com/aditya_">Instagram</a></li>
 				<li><a href="http://userscripts.org/users/aditya">Userscripts</a></li>
 			</ul>
 
