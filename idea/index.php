@@ -147,7 +147,7 @@ if($LOGGED){
 						<div class="related-to">
 						<?php
 							if($post['link']): ?>
-								<a class="fr" href="<?php echo $post['link'] ?>" target="_blank">further reading</a>
+								<a class="fr" href="<?php echo $post['link'] ?>" target="_blank">related reading</a>
 							<? endif; ?>
 							<?php
 								$related = array();
@@ -174,7 +174,7 @@ if($LOGGED){
 							</div>
 						<?php endif; ?>
 							<div class="post-body">
-								<a class="upd" href="#<?php echo $post['pid'] ?>"><?php echo strftime("%Y-%m-%d", $pdate) ?></a>
+								<a class="upd" href="#<?php echo $post['pid'] ?>"><?php echo strftime("<span class='day'>%d</span><span class='mon'>%b</span><span class='yea'>%Y</span>", $pdate) ?></a>
 								<div class="text">
 									<?php 
 										echo SmartyPants(Markdown($post['body']));

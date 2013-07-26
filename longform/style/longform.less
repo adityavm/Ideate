@@ -1,5 +1,10 @@
 @import "../../style/global";
 
+.post-body-width {
+	width: 500px;
+	margin: 1em auto;
+}
+
 ::selection {
 	background-color: #fff;
 	color: @red;
@@ -81,14 +86,13 @@ body {
 		}
 
 		.post-body {
-			width: 500px;
-			margin: 0 auto;
 			padding: 20px 0;
 
 			.ligatures;
 			.animate();
 
 			blockquote {
+				.post-body-width;
 				font-style: italic;
 				border-left: 3px solid @lred;
 				color: lighten(@lred, 35%);
@@ -101,6 +105,7 @@ body {
 			}
 
 			pre {
+				.post-body-width;
 				background-color: #ECF0F1;
 				padding: 10px 20px;
 				border-radius: 5px;
@@ -141,12 +146,14 @@ body {
 			}
 
 			h2 {
+				.post-body-width;
 				font: 16pt "proxima-nova", sans-serif;
 				text-transform: uppercase;
-				margin: 1.3em 0 0.3em;
+				margin: 1.3em auto 0.3em;
 			}
 
 			p {
+				.post-body-width;
 				position: relative;
 
 				a {
