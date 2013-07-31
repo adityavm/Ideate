@@ -124,6 +124,14 @@ p.sep {
 			position:absolute;
 			right:-80px; top: 2px;
 
+			.fn {
+				width: 150px;
+				font-style: normal;
+				line-height: 1.2em;
+
+				p:first-child { margin-top: 0; }
+			}
+
 			.fr {
 				display:inline-block;
 				width:30px;
@@ -172,6 +180,12 @@ p.sep {
 			p:first-child {
 				margin-top:0;
 			}
+			
+			sup {
+				vertical-align: middle;
+				position: relative;
+				top: -0.5em;
+			}
 
 			blockquote {
 				font-size: 16px;
@@ -214,6 +228,8 @@ p.sep {
 				text-transform: uppercase;
 				font-size: 15px;
 			}
+
+			.footnotes { display: none; }
 		}
 
 		.post-body ul li {
