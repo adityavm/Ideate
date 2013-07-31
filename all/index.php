@@ -101,7 +101,7 @@ if($_COOKIE[$auth['cookie']])
 			?>
 			</div>
 		</div>
-		<div class="instagram section">
+		<!--<div class="instagram section">
 			<hr class="stitch" />
 			<h3>Instagram</h3>
 			<div class="ig-photos">
@@ -118,7 +118,7 @@ if($_COOKIE[$auth['cookie']])
 				?>
 				</div>
 			</div>
-		</div>
+		</div>-->
 	</div>
 
 	</div>
