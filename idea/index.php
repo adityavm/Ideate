@@ -144,6 +144,7 @@ if($LOGGED){
 					$pdate = strtotime($post['created']);
 		?>
 					<div class="post" id="<?php echo $post['pid'] ?>">
+						<div class="fns"></div>
 						<div class="related-to">
 						<?php
 							if($post['link']): ?>

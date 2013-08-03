@@ -117,34 +117,66 @@ p.sep {
 		border-color:#f5f5f5;
 		position:relative;
 
+		.fns {
+			width:175px;
+			font:italic 10pt/1em "brandon-grotesque", serif;
+			color:#888888;
+			position:absolute;
+			right:-175px; top: 2px;
+
+			.fn {
+				width: 0;
+				font-style: normal;
+				line-height: 1.2em;
+				position: absolute; left: 0;
+				overflow: hidden;
+
+				.animate(0.2s);
+
+				.fnNo {
+					background-color: #ddd;
+					color: #333;
+					border-radius: 100%;
+					padding: 1px 7px;
+					position: absolute; top: 2px; left: 0;
+					font-size: 8pt;
+				}
+
+				p:first-child { margin-top: 0; }
+				p {
+					width: 150px;
+					padding-left: 25px;
+				}
+
+				&.show {
+					width: 150px;
+				}
+			}
+		}
+
 		.related-to {
 			width:70px;
 			font:italic 10pt/1em "brandon-grotesque", serif;
 			color:#888888;
 			position:absolute;
-			right:-80px; top: 2px;
-
-			.fn {
-				width: 150px;
-				font-style: normal;
-				line-height: 1.2em;
-
-				p:first-child { margin-top: 0; }
-			}
+			left:-82px; top: 60px;
+			text-align: right;
 
 			.fr {
 				display:inline-block;
-				width:30px;
+				width:50px;
 				margin-bottom:10px;
+				color: #333;
 			}
 
 			.label {
 				color:#888888;
 				margin-bottom:5px;
-				width:30px;
+				width:70px;
 			}
 
 			.idea-circle {
+				float: right;
 				border-radius:100%;
 				width:40px;
 				height:40px;
@@ -165,81 +197,95 @@ p.sep {
 
 			span {
 				&.day { font-size: 26px; }
-				&.mon { display: block; font-size: 20px; height: 12px; margin-top: -7px; }
+				&.mon { display: block; font-size: 20px; height: 15px; margin-top: -7px; }
 				&.yea { font-size: 12px; }
 			}
 		}
 
-		.post-body .text {
-			.ligatures;
+		.post-body {
+			.text {
+				.ligatures;
+				.animate();
 
-			a:hover {
-				text-decoration: none;
+				a:hover {
+					text-decoration: none;
+				}
+
+				p:first-child {
+					margin-top:0;
+				}
+				
+				sup {
+					vertical-align: middle;
+					position: relative;
+					top: -0.5em;
+
+					&.fn-link {
+						cursor: pointer;
+						text-decoration: underline;
+					}
+				}
+
+				blockquote {
+					font-size: 16px;
+					line-height: 1.25em;
+
+					cite { margin-top: 1em; }
+				}
+
+				cite {
+					display: block;
+					text-align: right;
+				}
+
+				strong {
+					font: 400 11pt "futura-pt", sans-serif;
+					text-transform: uppercase;
+				}
+
+				em {
+					margin-right: 1px;//to avoid ascenders getting cut off
+				}
+
+				img {
+					box-shadow:rgba(0,0,0,0.3) 0 0 5px;
+					max-width:500px;
+				}
+
+				h2, h3 {
+					margin: 1.5em 0 0.25em;
+					text-transform: uppercase;
+					font-family: "futura-pt";
+					font-weight: 500;
+					position: relative; left: -20px;
+				}
+
+				h2 { font-size: 26px; }
+				h3 { font-size: 17px; }
+
+				h2 + p,
+				h3 + p {
+					margin-top: 0;
+				}
+
+				.sc {
+					text-transform: uppercase;
+					font-size: 15px;
+				}
+
+				.footnotes { display: none; }
 			}
 
-			p:first-child {
-				margin-top:0;
+			&.unfocus {
+				opacity: 0.7;
+				cursor: pointer;
 			}
-			
-			sup {
-				vertical-align: middle;
-				position: relative;
-				top: -0.5em;
-			}
-
-			blockquote {
-				font-size: 16px;
-				line-height: 1.25em;
-
-				cite { margin-top: 1em; }
-			}
-
-			cite {
-				display: block;
-				text-align: right;
-			}
-
-			em {
-				margin-right: 1px;//to avoid ascenders getting cut off
-			}
-
-			img {
-				box-shadow:rgba(0,0,0,0.3) 0 0 5px;
-				max-width:500px;
-			}
-
-			h2, h3 {
-				margin: 1.5em 0 0.25em;
-				text-transform: uppercase;
-				font-family: "futura-pt";
-				font-weight: 500;
-				position: relative; left: -20px;
-			}
-
-			h2 { font-size: 26px; }
-			h3 { font-size: 17px; }
-
-			h2 + p,
-			h3 + p {
-				margin-top: 0;
-			}
-
-			.sc {
-				text-transform: uppercase;
-				font-size: 15px;
-			}
-
-			.footnotes { display: none; }
 		}
 
-		.post-body ul li {
-			//list-style: disc;
+		&:target {
+			-webkit-animation-delay:0s;
+			-webkit-animation-duration:3s;
+			-webkit-animation-name:fadeOutBg;
 		}
-	}
-
-	.post:target {
-		-webkit-animation-delay:0s;
-		-webkit-animation-duration:3s;
-		-webkit-animation-name:fadeOutBg;
 	}
 }

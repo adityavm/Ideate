@@ -1,3 +1,14 @@
+function setLocalDraft(val){
+	var exLSVal = JSON.parse(localStorage["tbLastSave"]) || {};
+		exLSVal[idea.id] = val;
+	localStorage["tbLastSave"] = JSON.stringify(exLSVal);
+}
+
+function getLocalDraft(){
+	var exLSVal = JSON.parse(localStorage["tbLastSave"]);
+	return exLSVal[idea.id];
+}
+
 function editButtonHandler(){
 	var $this = $(this).parents("div.post");
 	var pid = $(this).data("pid");
@@ -134,6 +145,10 @@ function postForm(id){
 					)
 					$("p.sep").fadeIn("fast");
 				}
+				
+				if(ret.raw && ret.raw != ""){//if post successfully posted
+					setLocalDraft(null);
+				}
 			}, 'json');
 		});
 	// cancel all edits to this post
@@ -149,9 +164,7 @@ function postForm(id){
 			});
 
 			// delete this post from last save
-			var exLSVal = JSON.parse(localStorage["tbLastSave"]) || {};
-				exLSVal[idea.id] = null;
-				localStorage["tbLastSave"] = JSON.stringify(exLSVal);
+			setLocalDraft(null);
 		});
 	$cont.append($tag, $save, $canc);
 
@@ -166,10 +179,7 @@ function postForm(id){
 	editor.on("change", function(){
 		// save last un-finished post in localStorage
 		// this overwrites any previous unfinished post
-		var val = editor.getValue();
-		var exLSVal = JSON.parse(localStorage["tbLastSave"]) || {};
-			exLSVal[idea.id] = val;
-			localStorage["tbLastSave"] = JSON.stringify(exLSVal);
+		setLocalDraft(editor.getValue());
 	});
 	$text.data("cm-ed", editor);
 	$form.hide();
@@ -182,8 +192,7 @@ function postForm(id){
 			$link.val(data.link);
 		});
 	} else if(id == 0){// saved draft
-		var exLSVal = JSON.parse(localStorage["tbLastSave"]);
-		$text.data("cm-ed").setOption("value", exLSVal[idea.id]);
+		$text.data("cm-ed").setOption("value", getLocalDraft());
 	}
 
 	return $form;
