@@ -14,6 +14,8 @@ class DB extends mysqli {
 		$config = file_get_contents("./tb/crud/config.json"); // not ideas page
 		if(!$config)
 			$config = file_get_contents("../crud/config.json");
+		if(!$config)
+			$config = file_get_contents("../config.json");
 
 		$CONFIG = json_decode($config, true);
 
