@@ -69,6 +69,7 @@ if($LOGGED){
 	<?php } ?>
 </head>
 <body>
+<div class="all-content">
 	<div class="head">
 		<div class="bar">
 			<div class="title">
@@ -145,5 +146,6 @@ if($LOGGED){
 		</div>
 		<div class="clear"></div>
 	</div>
+</div>
 </body>
 </html>

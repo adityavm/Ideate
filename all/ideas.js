@@ -2,7 +2,7 @@ function drawHome(){
 	var innerW = $(window).get(0).innerWidth;
 	var innerH = $(window).get(0).innerHeight;
 	var paper = Raphael($(".body").get(0),innerW,innerH-90);
-	var origin = {x:innerW/2, y:innerH/2-53};
+	var origin = {x:innerW/2, y:innerH/2-60};
 
 	var n = ideas.length;
 	var r = innerH/2 - 120;

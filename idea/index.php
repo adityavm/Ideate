@@ -95,6 +95,7 @@ if($LOGGED){
 	<?php } ?>
 </head>
 <body>
+<div class="all-content">
 	<div class="head">
 		<div class="title">
 			<img class="icon" src="https://si0.twimg.com/profile_images/2745465978/5999ce441d4251bcdd79159b5d75f359.png" />
@@ -125,14 +126,15 @@ if($LOGGED){
 				for($i=0;$i<count($related);$i++):
 		?>
 			<a href="./<?php echo $related[$i]['iid']?>" title="<?php echo $related[$i]['title']?>"><div class="related-circle" style="background-color:<?php echo $related[$i]['bg_color']?>;background-image:url('<?php echo $related[$i]['bg_img_small']?>');"></div></a>
-			</div>
 		<?php 
 				endfor;
 			endif;
+		?>
+		</div><!-- title-wrap -->
+		<?php
 			endif;
 		?>
-		</div>
-	</div>
+	</div><!-- banner -->
 	<div class="sep">
 		<span class="sep-line"></span>
 		<span class="sep-circ"></span>
@@ -235,5 +237,6 @@ if($LOGGED){
 		</div>
 		<div class="clear"></div>
 	</div>
+</div>
 </body>
 </html>

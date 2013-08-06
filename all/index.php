@@ -57,6 +57,7 @@ if($_COOKIE[$auth['cookie']])
 	<?php } ?>
 </head>
 <body>
+<div class="all-content">
 	<div class="head">
 		<div class="title">
 			<img class="icon" src="https://si0.twimg.com/profile_images/2745465978/5999ce441d4251bcdd79159b5d75f359.png" />
@@ -138,5 +139,6 @@ if($_COOKIE[$auth['cookie']])
 		</div>
 		<div class="clear"></div>
 	</div>
+</div>
 </body>
 </html>

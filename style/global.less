@@ -25,6 +25,11 @@
 
 // globals
 
+.all-content {
+	overflow: auto;
+	height: 100%;
+}
+
 .head {
 	//padding:0 0 5px;
 	background:#222222;
@@ -110,7 +115,7 @@
 
 	.left {
 		color:#ffffff;
-		padding:8px;
+		padding:8px 8px 0;
 		float:left;
 		width:30%;
 		text-align: left;
@@ -124,16 +129,16 @@
 		float: left;
 		width: 37.7%;
 		color: #666;
-		padding: 8px 0;
+		padding: 8px 0 0;
 		text-align: center;
 	}
 
 	.right {
 		float: right;
 		text-align: right;
-		width: 30%;
+		width: 15%;
 		color: #666;
-		padding: 8px 8px 0 0;
+		padding: 6px 8px 0 0;
 
 		span { color: darken(#ff0000, 20%); }
 	}
@@ -141,6 +146,8 @@
 
 html,body {
 	margin: 0; padding: 0;
+	height: 100%;
+	overflow: hidden;
 }
 
 .clear {
