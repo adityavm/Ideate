@@ -83,12 +83,12 @@ body {
 	}
 
 	.longform {
-		background-color: @red;
+		background-color: @brown;
 
 		.trans-arrow-back {
 			border-width: 13px 13px 0;
 			border-style: solid;
-			border-color: darken(@red, 20%) transparent transparent;
+			border-color: darken(@brown, 20%) transparent transparent;
 			width: 0; height: 0;
 			position: absolute; right: 17px; top: -2px;
 			display: none;
@@ -104,7 +104,7 @@ body {
 		}
 
 		.longform-list {
-			font-family: "brandon-grotesque", sans-serif;
+			font-family: "futura-pt", sans-serif;
 
 			.lf-post {
 				width: 600px;
@@ -113,20 +113,20 @@ body {
 
 				.lf-post-title {
 					width: 600px;
-					a { font-weight: 300; font-size: 16pt; line-height: 1.2em; color: #fff; display:inline-block; }
+					a { font-weight: 400; font-size: 16pt; line-height: 1.2em; color: #fff; display:inline-block; }
 				}
 
 				.lf-post-meta {
-					border-top: 1px solid @lred;
+					border-top: 1px solid @lbrown;
 					margin-top: 5px;
 					padding: 5px 10px 0;
 					font-size: 10pt;
 					font-family: "proxima-nova", sans-serif;
-					color: lighten(@lred, 30%);
+					color: lighten(@lbrown, 30%);
 					display: inline-block;
 
 					.sep { color: rgba(255,255,255,0.2); }
-					a { color: lighten(@lred, 30%); }
+					a { color: lighten(@lbrown, 30%); }
 				}
 			}
 		}

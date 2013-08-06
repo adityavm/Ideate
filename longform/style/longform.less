@@ -1,13 +1,13 @@
 @import "../../style/global";
 
 .post-body-width {
-	width: 550px;
+	width: 500px;
 	margin: 1em auto;
 }
 
 ::selection {
 	background-color: #fff;
-	color: @red;
+	color: @brown;
 }
 
 body {
@@ -15,47 +15,49 @@ body {
 }
 
 .body {
-	background-color: @red;
+	background-color: #f5f5f5;
 
 	.post {
-		font: 300 21px/1.3em "chaparral-pro", serif;
-		color: #fff;
+		font: 300 18px/1.3em "chaparral-pro", serif;
+		color: #333;
 		min-height: 100vh;
 
-		.post-meta {
-			text-align: center;
+		.post-meta-wrap {
+			background-color: #fff;
 			padding: 20px 0;
-			font: 300 11pt "proxima-nova", sans-serif;
 
-			a {
-				color: #fff;
-				text-decoration: none;
-			}
+			.post-meta {
+				width: 500px;
+				margin: 0 auto;
+				font: 400 11pt "proxima-nova", sans-serif;
 
-			.sep {
-				color: rgba(255,255,255,0.2);
-			}
+				a {
+					color: #333;
+					text-decoration: none;
+				}
 
-			.ttr {
-				.icon-book { }
+				.sep {
+					color: rgba(0,0,0,0.2);
+				}
+
+				.ttr {
+					.icon-book { }
+				}
 			}
 		}
 
 		.post-title-wrap {
-			font: 29pt/1.2em "brandon-grotesque", sans-serif;
+			font: 500 32px/1.2em "futura-pt", sans-serif;
 			background-color: #fff;
 			color: #333;
-			padding: 25px 0;
-			text-align: center;
-			box-shadow: inset rgba(0,0,0,0.2) 0 4px 10px;
+			padding: 350px 0 0;
 			position: relative;
 
 			.animate(0.3s);
 
 			.post-title {
-				width: 600px;
+				width: 500px;
 				margin: 0 auto;
-				font-weight: 300;
 			}
 
 			.post-cover-text {
@@ -73,17 +75,6 @@ body {
 				
 				p { margin: 0; }
 				a { color: #fff; }
-			}
-
-			&.post-cover {
-				padding: 350px 0 0;
-				background-size: cover;
-
-				.post-title {
-					padding: 20px;
-					background-color: rgba(0,0,0,0.7);
-					color: #fff;
-				}
 			}
 		}
 
@@ -125,8 +116,9 @@ body {
 					line-height: 1.2em;
 					width: 100px;
 					position: absolute;
-					border-top: 1px solid @lred;
+					border-top: 1px solid @brown;
 					padding-top: 5px;
+					color: @brown;
 
 					&.left { left: -110px; }
 				}
@@ -142,14 +134,14 @@ body {
 
 			hr {
 				border: 0;
-				border-top: 3px dotted #FFF;
+				border-top: 3px dotted @lbrown;
 				margin: 2em auto;
 				width: 15px;
 			}
 
 			h2 {
 				.post-body-width;
-				font: 16pt "proxima-nova", sans-serif;
+				font: 400 16pt "futura-pt", sans-serif;
 				text-transform: uppercase;
 				margin: 1.3em auto 0.3em;
 			}
@@ -159,7 +151,7 @@ body {
 				position: relative;
 
 				a {
-					color: #fff;
+					color: @brown;
 
 					&:hover {
 						text-decoration: none;
@@ -171,7 +163,7 @@ body {
 				}
 
 				&.intro {
-					font-size: 32px;
+					font-size: 24px;
 					line-height: 1.2em;
 					//font-style: italic;
 					margin-top: 0;
@@ -196,13 +188,13 @@ body {
 
 		.outer-circle {
 			display: inline-block;
-			border: 2px solid #fff;
+			border: 2px solid @lbrown;
 			border-radius: 100%;
 			padding: 0 6px 2px;
 
 			.inner-circle {
 				display: inline-block;
-				background-color: #fff;
+				background-color: @lbrown;
 				border-radius: 100%;
 				width: 8px; height: 8px;
 			}

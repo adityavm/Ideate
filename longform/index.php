@@ -93,26 +93,24 @@ if($LOGGED){
 			<?php
 				$pdate = ($post['created']) ? strtotime($post['created']) : time();
 			?>
-			<div class="post-meta">
-				<a href="#<?php echo $post['pid'] ?>"><?php echo strftime("%d %B, &rsquo;%y", $pdate) ?></a>
-				<span class="sep">+</span> 
-				<span class="ttr">
-					<span class="icon-time"></span>
-					<?php
-						$rawtext = count(explode(" ", $post['body']));
-
-						// 1 min reading time for every 200 words
-						// round up to nearest .5 before taking floor
-						echo round($rawtext/200, 0) . " min";
-					?>
-				</span>
-			</div>
-			<div class="post-title-wrap <?php if($post['cover']){ ?>post-cover<?php } ?>" data-cover="<?php echo $post['cover'] ?>" style="background-image:url('<?php echo $post['cover']?>');">
-				<?php if($LOGGED): ?>
-					<span class="edit-cover-btn icon-picture"></span>
-				<?php endif; ?>
+			<div class="post-title-wrap">
 				<div class="post-title"><?php echo $post['title']; ?></div>
-				<div class="post-cover-text <?php echo ($post['cover_text']) ? "" : "hide" ?>"><?php echo SmartyPants(Markdown($post['cover_text'])); ?></div>
+			</div>
+			<div class="post-meta-wrap">
+				<div class="post-meta">
+					<a href="#<?php echo $post['pid'] ?>"><?php echo strftime("%d %B, &rsquo;%y", $pdate) ?></a>
+					<span class="sep">+</span> 
+					<span class="ttr">
+						<span class="icon-time"></span>
+						<?php
+							$rawtext = count(explode(" ", $post['body']));
+
+							// 1 min reading time for every 200 words
+							// round up to nearest .5 before taking floor
+							echo round($rawtext/200, 0) . " min";
+						?>
+					</span>
+				</div>
 			</div>
 			<div class="post-body">
 				<div class="text">
