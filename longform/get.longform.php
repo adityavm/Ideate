@@ -1,8 +1,8 @@
 <?php
 
-require_once "../crud/db.php";
-require_once "../idea/md/markdown.php";
-require_once "../idea/md/smartypants.php";
+require_once "../include/crud/db.php";
+require_once "../include/md/markdown.php";
+require_once "../include/md/smartypants.php";
 
 $db = new DB();
 

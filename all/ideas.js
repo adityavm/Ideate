@@ -64,19 +64,23 @@ function drawHome(){
 
 		if(idea.bg_img)
 			c.attr("fill", "url('"+ idea.bg_img_small +"')");
-			
-			(function(id){
-			c.click(function(){
-				top.window.location = "../idea/"+id;
-			});
-			})(idea.iid)
 
 		var t = paper.text(coords[idea.iid].x, (coords[idea.iid].y+rad+15), idea.title);
 			t.attr("fill", "#666");
 			t.attr("font", "400 15px 'brandon-grotesque', sans-serif");
-			t.click(function(){
-				top.window.location = "../idea/"+idea.iid;
-			});
+
+		$(".body").append(
+			$("<a class='idea-circle-link'></a>")
+				.attr("href", "/idea/" + idea.slug)
+				.css({
+					"top": c.getBBox().y, "left": c.getBBox().x, "width": c.getBBox().width, "height": c.getBBox().height
+				}),
+			$("<a class='idea-circle-link'></a>")
+				.attr("href", "/idea/" + idea.slug)
+				.css({
+					"top": t.getBBox().y, "left": t.getBBox().x, "width": t.getBBox().width, "height": t.getBBox().height
+				})
+		)
 	}
 	console.groupEnd();
 

@@ -1,6 +1,6 @@
 <?
 
-error_reporting(E_ERROR | E_PARSE);
+error_reporting(E_PARSE);
 
 /**
 * Basic class to handle CRUD
@@ -11,9 +11,9 @@ class DB extends mysqli {
 	public $database;
 
 	function __construct(){
-		$config = file_get_contents("./tb/crud/config.json"); // not ideas page
+		$config = file_get_contents("./tb/include/crud/config.json"); // not ideas page
 		if(!$config)
-			$config = file_get_contents("../crud/config.json");
+			$config = file_get_contents("../include/crud/config.json");
 		if(!$config)
 			$config = file_get_contents("../config.json");
 

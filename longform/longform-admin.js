@@ -51,21 +51,16 @@ $(document).ready(function(){
 				id: (pid == 0) ? null : pid,
 				title: $(".post-title").text(),
 				text: editor.getValue(),
-				cover: $(".post-title-wrap").data("cover"),
-				covertxt: $(".post-cover-text").text()
 			}, function(ret){
+				if(ret.error)
+					return;
+
 				$title.html( ret.title );
 				$(".post-body .text").html( ret.html );
 
 				$edit.show();
 				$save.hide();
 				$cancel.hide();
-				$editcover.hide();
-				$covertext.removeAttr("contenteditable");
-				if(ret.cover)
-					$covertext.addClass("hide");
-				else
-					$covertext.html(ret.covertxt);
 				$title.removeAttr("contenteditable");
 				$(".form").fadeOut("fast", function(){ 
 					$(".form").remove();
@@ -76,7 +71,7 @@ $(document).ready(function(){
 				$.postProcessing();
 
 				if(pid == 0)
-					window.location = "/longform/"+ret.pid
+					window.location = "/longform/"+ret.slug
 			}, 'json')
 		}
 	});
@@ -91,8 +86,6 @@ $(document).ready(function(){
 			$edit.hide().removeClass("working").html("Edit");// reset edit button
 			$save.show();
 			$cancel.show();
-			$editcover.show();
-			$covertext.attr("contenteditable", "true").removeClass("hide").text(ret.covertxt);
 
 			// make title editable
 			$title.attr("contenteditable", "true");
@@ -131,43 +124,16 @@ $(document).ready(function(){
 
 		var converter = new Showdown.converter();
 
-		$covertext.html( converter.makeHtml(post.covertxt) );//cover text
 		$(".post-body .text").html( converter.makeHtml(post.raw) );//post body
 		$.postProcessing();
 		$(".post-title").text( post.title );//post title
-		$titlewrap.data("cover", post.cover).css("background-image", ((post.cover)?"url('"+post.cover+"')":"none"));//cover photo
-		if(post.cover) $titlewrap.addClass("post-cover"); else $titlewrap.removeClass("post-cover");
 		$(".form").fadeOut("fast", function(){//editor
 			$(".form").remove();
 			$(".body").removeClass("editing");
 		});
 		$(".post").data("cm-ed", null);
-		$editcover.hide();//cover edit btn
 		$cancel.removeClass("confirm").hide();//cancel btn
 		$save.hide();//save btn
 		$edit.show();//edit btn
-	});
-	$editcover.on("click", function(){
-		var url = $titlewrap.data("cover");
-		var $editorwrap;
-		$titlewrap.append(
-			$editorwrap = $("<div class='post-cover-editor'></div>").append(
-				$("<input type='text'></input>").val(url).on("keydown", function(e){
-					var $this = $(this); 
-					url = $(this).val();
-					if(e.keyCode == 13){//enter
-						if($.trim(url) != ""){
-							$titlewrap.data("cover", url).css("background-image", "url('"+ url +"')").addClass("post-cover");
-						} else {
-							$titlewrap.data("cover", null).css("background-image", "none").removeClass("post-cover");
-						}
-						$editorwrap.fadeOut("fast", function(){ $editorwrap.remove(); });
-					}
-					if(e.keyCode == 27){//esc
-						$editorwrap.fadeOut("fast", function(){ $editorwrap.remove(); });
-					}
-				})
-			)
-		);
 	});
 });

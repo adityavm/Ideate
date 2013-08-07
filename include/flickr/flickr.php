@@ -1,9 +1,10 @@
 <?php
 
 header("Content-type:application/json");
+echo getcwd();
 
-require_once("phpFlickr.php");
-require_once("../db.php");
+require_once "phpFlickr.php";
+require_once "../include/crud/db.php";
 
 $db = new DB();
 $auth = $db->_query("SELECT * FROM auth LIMIT 1");

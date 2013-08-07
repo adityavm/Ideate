@@ -1,7 +1,10 @@
 <?php
-require "../crud/db.php";
-require_once "../idea/md/markdown.php";
-require_once "../idea/md/smartypants.php";
+
+error_reporting(E_PARSE);// in-case of direct access
+
+require_once $BASE_URL ."/include/crud/db.php";
+require_once $BASE_URL ."/include/md/markdown.php";
+require_once $BASE_URL ."/include/md/smartypants.php";
 
 # initialise db
 $db = new DB();
@@ -11,16 +14,20 @@ if($_COOKIE[$auth['cookie']])
 	$LOGGED = true;
 
 # get post ID from URL
-$pid = $_GET['id'];
-if($pid == 0 || ctype_digit($pid)){
-	$post = $db->_query("SELECT * FROM longform WHERE `pid`={$pid}");
+if(isset($POST_IDENT)){
+	$pid = $POST_IDENT;
+	if(ctype_digit($pid)){
+		$post = $db->_query("SELECT * FROM longform WHERE `pid`=$pid");
+	} else if(ctype_print($pid)){
+		$post = $db->_query("SELECT * FROM longform WHERE `slug` LIKE '$pid'");
+	}
 } else
-	header("Location: /");
+	header("Location: /404");
 
 if($LOGGED){
 	echo "<!--\n";
 	echo '$post:',  "\n", var_export($posts), "\n";
-	echo '$_GET:', "\n", var_export($_GET), "\n";
+	echo '$POST_IDENT:', "\n", var_export($POST_IDENT), "\n";
 	echo "-->";
 }
 ?>
@@ -33,25 +40,18 @@ if($LOGGED){
 
 	<link rel="stylesheet" type="text/css" href="/tb/longform/style/longform.less" />
 	<?php if($LOGGED){ ?>
-		<link rel="stylesheet" href="/tb/idea/cm/codemirror.css" />
-		<link rel="stylesheet" href="/tb/idea/cm/elegant.css" />
+		<link rel="stylesheet" href="/tb/include/cm/codemirror.css" />
+		<link rel="stylesheet" href="/tb/include/cm/elegant.css" />
 		<link rel="stylesheet" type="text/css" href="/tb/longform/style/longform-admin.less" />
 	<? } ?>
 	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
-	<style type="text/css">
-		@-webkit-keyframes fadeOutBg {
-			0% { background-color: #fff; border-color: #aaa; -webkit-animation-timing-function: ease-out; }
-			100% { background-color: #f5f5f5; border-color: #f5f5f5; -webkit-animation-timing-function: ease-out; }
-		}
-	</style>
-
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 	<?php if($LOGGED){ ?>
-		<script src="/tb/idea/cm/codemirror.js"></script>
-		<script src="/tb/idea/cm/markdown.js"></script>
-		<script src="/tb/longform/sd/showdown.js"></script>
+		<script src="/tb/include/cm/codemirror.js"></script>
+		<script src="/tb/include/cm/markdown.js"></script>
+		<script src="/tb/include/sd/showdown.js"></script>
 		<script src="/tb/longform/longform-admin.js" type="text/javascript"></script>
 	<? } ?>
 
@@ -61,7 +61,7 @@ if($LOGGED){
 	<script type="text/javascript">
 		try{Typekit.load({});}catch(e){}
 
-		<?php if($pid == 0){ ?>$(document).ready(newPost);<?php } ?>
+		<?php if(ctype_digit($pid) && $pid == 0){ ?>$(document).ready(newPost);<?php } ?>
 	</script>
 
 	<?php if(!$LOGGED){ ?>

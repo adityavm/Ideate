@@ -1,7 +1,11 @@
 <?php
-require "../crud/db.php";
-require_once "./md/markdown.php";
-require_once "./md/smartypants.php";
+
+error_reporting(E_PARSE);// in-case of direct access
+
+require_once $BASE_URL ."/include/crud/db.php";
+require_once $BASE_URL ."/include/functions.php";
+require_once $BASE_URL ."/include/md/markdown.php";
+require_once $BASE_URL ."/include/md/smartypants.php";
 
 # initialise db
 $db = new DB();
@@ -11,21 +15,27 @@ if($_COOKIE[$auth['cookie']])
 	$LOGGED = true;
 
 # get idea ID from URL
-$iid = $_GET['id'];
-if(ctype_digit($iid)){
-	$idea = 	$db->_query("SELECT * FROM idea WHERE `iid`=$iid LIMIT 1");
-	$posts = 	$db->query("SELECT * FROM post WHERE `iid`=$iid ORDER BY `pid`");
+if($POST_IDENT){
+	$iid = $POST_IDENT;
+	if(ctype_digit($iid)){
+		$idea = 	$db->_query("SELECT * FROM idea WHERE `iid`=$iid LIMIT 1");
+		$posts = 	$db->query("SELECT * FROM post WHERE `iid`=$iid ORDER BY `pid`");
+	} else if (ctype_print($iid)){
+		$idea = 	$db->_query("SELECT * FROM idea WHERE `slug` LIKE '$iid' LIMIT 1");
+		$posts = 	$db->query("SELECT * FROM post WHERE `iid`={$idea['iid']} ORDER BY `pid`");
+	}
 } else
-	header("Location: /");
+	header("Location: /404");
 
 if(!$idea)
-	header("Location: /");
+	header("Location: /404");
 
 if($LOGGED){
 	echo "<!--\n";
 	echo '$idea:',  "\n", var_export($idea), "\n";
 	echo '$posts:',  "\n", var_export($posts), "\n";
 	echo '$_GET:', "\n", var_export($_GET), "\n";
+	echo getcwd() . "\n";
 	echo "-->";
 }
 ?>
@@ -38,8 +48,8 @@ if($LOGGED){
 
 	<link rel="stylesheet" type="text/css" href="/tb/idea/style/idea.less" />
 	<?php if($LOGGED){ ?>
-		<link rel="stylesheet" href="/tb/idea/cm/codemirror.css" />
-		<link rel="stylesheet" href="/tb/idea/cm/elegant.css" />
+		<link rel="stylesheet" href="/tb/include/cm/codemirror.css" />
+		<link rel="stylesheet" href="/tb/include/cm/elegant.css" />
 		<link rel="stylesheet" type="text/css" href="/tb/idea/style/idea-admin.less" />
 	<? } ?>
 	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -80,8 +90,8 @@ if($LOGGED){
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 	<?php if($LOGGED){ ?>
-		<script src="/tb/idea/cm/codemirror.js"></script>
-		<script src="/tb/idea/cm/markdown.js"></script>
+		<script src="/tb/include/cm/codemirror.js"></script>
+		<script src="/tb/include/cm/markdown.js"></script>
 		<script src="/tb/idea/idea-admin.js" type="text/javascript"></script>
 	<? } ?>
 

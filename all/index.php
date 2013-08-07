@@ -1,10 +1,10 @@
 <?php
 
-require_once "./tb/crud/db.php";
+require_once $BASE_URL . "/include/crud/db.php";
 
 $db = new DB();
 $auth = $db->_query("SELECT * FROM auth LIMIT 1");
-$ideas = $db->query("SELECT `iid`,`bg_color`,`bg_img`,`bg_img_small`,`title` FROM idea WHERE `closed`=0 ORDER BY `updated` DESC");
+$ideas = $db->query("SELECT `iid`,`bg_color`,`bg_img`,`bg_img_small`,`title`,`slug` FROM idea WHERE `closed`=0 ORDER BY `updated` DESC");
 
 if($_COOKIE[$auth['cookie']])
 	$LOGGED = true;
@@ -84,9 +84,9 @@ if($_COOKIE[$auth['cookie']])
 				while($l = $lf->fetch_assoc()):
 			?>
 				<div class="lf-post">
-					<div class="lf-post-title"><a href="http://adityamukherjee.com/longform/<?php echo $l['pid'] ?>"><?php echo htmlentities($l['title']) ?></a></div>
+					<div class="lf-post-title"><a href="http://adityamukherjee.com/longform/<?php echo $l['slug'] ?>"><?php echo htmlentities($l['title']) ?></a></div>
 					<div class="lf-post-meta">
-					<a href="http://adityamukherjee.com/longform/<?php echo $l['pid'] ?>"><?php echo strftime("%d %B, &rsquo;%y", strtotime($l['created'])) ?></a>
+					<a href="http://adityamukherjee.com/longform/<?php echo $l['slug'] ?>"><?php echo strftime("%d %B, &rsquo;%y", strtotime($l['created'])) ?></a>
 						<span class="sep">+</span>
 						<span class="ttr">
 							<span class="icon-time"></span>
