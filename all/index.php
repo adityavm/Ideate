@@ -86,7 +86,7 @@ if($_COOKIE[$auth['cookie']])
 				<div class="lf-post">
 					<div class="lf-post-title"><a href="http://adityamukherjee.com/longform/<?php echo $l['slug'] ?>"><?php echo htmlentities($l['title']) ?></a></div>
 					<div class="lf-post-meta">
-					<a href="http://adityamukherjee.com/longform/<?php echo $l['slug'] ?>"><?php echo strftime("%d %B, &rsquo;%y", strtotime($l['created'])) ?></a>
+					<a href="http://adityamukherjee.com/longform/<?php echo $l['slug'] ?>"><?php echo strftime("%e %B, &rsquo;%y", strtotime($l['created'])) ?></a>
 						<span class="sep">+</span>
 						<span class="ttr">
 							<span class="icon-time"></span>

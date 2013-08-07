@@ -98,7 +98,7 @@ if($LOGGED){
 			</div>
 			<div class="post-meta-wrap">
 				<div class="post-meta">
-					<a href="#<?php echo $post['pid'] ?>"><?php echo strftime("%d %B, &rsquo;%y", $pdate) ?></a>
+					<a href="#<?php echo $post['pid'] ?>"><?php echo strftime("%e %B, &rsquo;%y", $pdate) ?></a>
 					<span class="sep">+</span> 
 					<span class="ttr">
 						<span class="icon-time"></span>
