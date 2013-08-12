@@ -75,6 +75,26 @@ if($_COOKIE[$auth['cookie']])
 	</div>
 	<div class="body">
 		<div class="woi-label">Web<span>of</span>Ideas</div>
+		<div class="closed-ideas section">
+			<hr class="stitch" />
+			<h3>Completed Topics</h3>
+			<div class="idea-list">
+			<?php
+				$ideas = $db->query("SELECT * FROM idea WHERE `closed`=1 ORDER BY `iid` DESC");
+				while($i = $ideas->fetch_assoc()):
+			?>
+				<div class="idea">
+					<div class="idea-circle" style="background-color:<?php echo $i['bg_color'] . "; background-image: url('". $i['bg_img_small'] ."');"?>">
+						<a href="http://adityamukherjee.com/idea/<?php echo $i['slug']?>"></a>
+					</div>
+					<a href="http://adityamukherjee.com/idea/<?php echo $i['slug']?>"><?php echo $i['title']?></a>
+				</div>
+			<?php
+				endwhile;
+			?>
+				<div class="clear"></div>
+			</div>
+		</div>
 		<div class="longform section">
 			<hr class="stitch" />
 			<h3>Longform</h3>

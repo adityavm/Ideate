@@ -50,41 +50,51 @@ body {
 		span { display:block; font-style: italic; font-family: "palatino", serif; text-transform: none; }
 	}
 
-	.idea {
-		float:left;
-		width:110px;
-		height:200px;
-		margin:0 20px;
-
-		.idea-circle {
-			width:100px;
-			height:100px;
-			border-radius:100%;
-			border:5px solid rgba(255,255,255,0.5);
-			background-size:cover;
-			background-repeat:no-repeat;
-			background-position:center center;
-		}
-
-		.idea-title {
-			font:600 10pt "proxima-nova", "Helvetica Neue", sans-serif;
-			text-align:center;
-			width:110px;
-			margin-top:5px;
-		}
-
-		.pcou {
-			font:italic 9pt "pt-sans", "Helvetica Neue", sans-serif;
-			color:#aaaaaa;
-			margin-top:5px;
-			text-align:center;
-			text-transform:uppercase;
-			display:none;
-		}
-	}
-
 	a:hover {
 		text-decoration:underline;
+	}
+
+	.closed-ideas {
+		@fg: #3b3937;
+
+		background-color: #c8c3ba;	
+
+		h3 {
+			color: @fg;
+		}
+
+		.idea-list {
+			text-align: center;
+			padding-bottom: 20px;
+
+			.idea {
+				display: inline-block;
+				width: 120px; height: 100px;
+				font-family: "brandon-grotesque", sans-serif;
+				margin: 0 10px 10px;
+
+				.idea-circle {
+					width: 75px; height: 75px;
+					border-radius: 100%;
+					background-position: center;
+					background-size: cover;
+					position: relative;
+					border: 1px solid rgba(0,0,0,0.3);
+					margin: 0 auto;
+
+					a { 
+						position: absolute; top: 0; left: 0; 
+						display: inline-block;
+						width: 100%; height: 100%;
+					}
+				}
+
+				a {
+					color: @fg;
+					font-size: 16px;
+				}
+			}
+		}
 	}
 
 	.longform {
@@ -106,6 +116,10 @@ body {
 			width: 0; height: 0;
 			position: absolute; right: 20px; top: -2px;
 			display: none;
+		}
+
+		h3 {
+			color: #fff;
 		}
 
 		.longform-list {
@@ -165,7 +179,7 @@ body {
 				&:last-child a { margin-bottom: 0; }
 			}
 		}
-	}
+	}	
 
 	.section {
 		padding: 10px 0;
@@ -182,7 +196,6 @@ body {
 
 		h3 {
 			font: 16pt "proxima-nova", sans-serif;
-			color: #fff;
 			text-align: center;
 			text-transform: uppercase;
 			margin: 0;

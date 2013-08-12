@@ -39,6 +39,9 @@ function drawHome(){
 				console.log(i,v);
 				
 				var l = i;
+
+				if(!coords[l])
+					return;
 				
 				var src_c = coords[idea.iid];
 				var dst_c = coords[l];
