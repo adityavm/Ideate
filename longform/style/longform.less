@@ -91,8 +91,8 @@ body {
 			blockquote {
 				.post-body-width;
 				font-style: italic;
-				border-left: 3px solid @brown;
-				color: @lb;
+				border-left: 3px solid @lb;
+				color: @brown;
 				margin: 0; padding: 0 20px;
 
 				p {
@@ -111,20 +111,6 @@ body {
 				code {
 					font-size: 10pt;
 					color: #333;
-				}
-			}
-
-			cite {
-				&.aside {
-					font-size: 15px;
-					line-height: 1.2em;
-					width: 100px;
-					position: absolute;
-					border-top: 1px solid @lb;
-					padding-top: 5px;
-					color: @brown;
-
-					&.left { left: -110px; }
 				}
 			}
 
@@ -172,6 +158,34 @@ body {
 					line-height: 1.3em;
 					//font-style: italic;
 					margin-top: 0;
+				}
+
+				.aside {
+					width: 150px;
+					font: 400 15px "brandon-grotesque", sans-serif;
+					color: @lbrown;
+
+					&.left {
+						position: absolute; left: -110px;
+					}
+
+					&.right {
+						position: absolute; right: -160px;
+					}
+				}
+
+				cite {
+					&.aside {
+						font-size: 15px;
+						line-height: 1.2em;
+						width: 100px;
+						position: absolute;
+						border-top: 1px solid @lb;
+						padding-top: 5px;
+						color: @brown;
+
+						&.left { left: -110px; }
+					}
 				}
 
 				&:last-child {
