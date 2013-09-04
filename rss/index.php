@@ -1,5 +1,4 @@
 <?php
-
 header("Content-type:application/rss+xml; charset:utf-8");
 
 require_once $BASE_URL . "/include/md/smartypants.php";
@@ -9,14 +8,14 @@ require_once $BASE_URL . "/include/crud/db.php";
 $db = new DB();
 
 if($POST_IDENT){
-	if(ctype_digit($POST_IDENT)){
-		$idea = $db->_query("SELECT `title` FROM idea WHERE `iid`={$_GET['id']} LIMIT 1");
-		$posts = $db->query("SELECT * FROM post WHERE `iid`={$_GET['id']} ORDER BY `pid` DESC LIMIT 5");
-	} else if (ctype_print($POST_IDENT)){
-		$idea = $db->_query("SELECT `title` FROM idea WHERE `slug` LIKE '{$_GET['id']}' LIMIT 1");
-		$posts = $db->query("SELECT * FROM post WHERE `iid`={$idea['iid']} ORDER BY `pid` DESC LIMIT 5");
-	} else if($POST_IDENT == "longform"){
+	if($POST_IDENT === "longform"){
 		$posts = $db->query("SELECT * FROM longform ORDER BY `pid` DESC LIMIT 5");
+	} else if(ctype_digit($POST_IDENT)){
+		$idea = $db->_query("SELECT `title` FROM idea WHERE `iid`={$POST_IDENT} LIMIT 1");
+		$posts = $db->query("SELECT * FROM post WHERE `iid`={$POST_IDENT} ORDER BY `pid` DESC LIMIT 5");
+	} else if (ctype_print($POST_IDENT)){
+		$idea = $db->_query("SELECT `title`,`iid` FROM idea WHERE `slug` LIKE '{$POST_IDENT}' LIMIT 1");
+		$posts = $db->query("SELECT * FROM post WHERE `iid`={$idea['iid']} ORDER BY `pid` DESC LIMIT 5");
 	}
 } else {
 	$union = $db->query("SELECT 'longform' as tableName, pid, created FROM longform UNION SELECT 'post' as tableName, pid, created FROM post ORDER BY created DESC LIMIT 5");
@@ -38,7 +37,7 @@ if($POST_IDENT){
 	endwhile;
 }
 
-if($_GET['id'])
+if($POST_IDENT)
 	while($p = $posts->fetch_assoc())
 		$out[] = $p;
 else
@@ -52,7 +51,7 @@ echo '<?xml version="1.0" encoding="utf-8" ?>';
 	<title>Aditya Mukherjee</title>
 	<link>http://adityamukherjee.com</link>
 	<atom:link href="http://adityamukherjee.com/rss/<?php echo ($POST_IDENT) ? $POST_IDENT : ""; ?>" rel="self" type="application/rss+xml" />
-	<description><? echo ($_GET['id']) ? $idea['title'] : "The best and worst of Aditya Mukherjee."; ?></description>
+	<description><? echo ($POST_IDENT) ? $idea['title'] : "The best and worst of Aditya Mukherjee."; ?></description>
 <?php
 	for($i=0;$i<count($out);$i++):
 		$o = $out[$i];
@@ -61,7 +60,7 @@ echo '<?xml version="1.0" encoding="utf-8" ?>';
   	<title><?php 
 		$body = $o['body'];
 		$body = SmartyPants(Markdown($body));
-		if($o['type'] == "longform"):
+		if($o['type'] == "longform" || $POST_IDENT === "longform"):
 			echo htmlentities($o['title']);
 			$link = "http://adityamukherjee.com/longform/" . $o['slug'];
 		else:
