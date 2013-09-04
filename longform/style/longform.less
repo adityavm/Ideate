@@ -101,16 +101,22 @@ body {
 				}
 			}
 
+			code {
+				font-size: 15px;
+				background-color: #eee; color: #666;
+				font-family: "Inconsolata", monospace;
+				padding: 5px 4px;
+				border-radius: 5px;
+			}
+
 			pre {
 				.post-body-width;
-				background-color: #ECF0F1;
+				background-color: #333;
 				padding: 10px 20px;
 				border-radius: 5px;
-				box-shadow: inset rgba(0,0,0,0.5) 1px 1px 10px;
 
 				code {
-					font-size: 10pt;
-					color: #333;
+					background-color: transparent; color: #f5f5f5;
 				}
 			}
 
@@ -134,6 +140,10 @@ body {
 				font: 400 16pt "futura-pt", sans-serif;
 				text-transform: uppercase;
 				margin: 1.3em auto 0.3em;
+			}
+
+			iframe.twitter-tweet {
+				margin: 10px auto !important;
 			}
 
 			p {
@@ -166,7 +176,7 @@ body {
 					color: @lbrown;
 
 					&.left {
-						position: absolute; left: -110px;
+						position: absolute; left: -160px;
 					}
 
 					&.right {
