@@ -1,6 +1,6 @@
 <?php
 
-require_once "../crud/db.php";
+require_once "../include/crud/db.php";
 $db = new DB();
 
 if($_POST['p']):
