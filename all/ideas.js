@@ -1,7 +1,7 @@
 function drawHome(){
 	var innerW = $(window).get(0).innerWidth;
 	var innerH = $(window).get(0).innerHeight;
-	var paper = Raphael($(".body").get(0),innerW,innerH-90);
+	var paper = Raphael($(".svg").get(0),innerW,innerH-90);
 	var origin = {x:innerW/2, y:innerH/2-60};
 
 	var n = ideas.length;
@@ -92,7 +92,6 @@ function drawHome(){
 
 $(document).ready(function(){
 	$(".body").css({
-		"height": (window.innerHeight - 61) + "px",
 		"width":  (window.innerWidth) + "px"
 	});
 	drawHome();

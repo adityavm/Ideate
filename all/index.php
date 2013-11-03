@@ -74,7 +74,9 @@ if($_COOKIE[$auth['cookie']])
 		<div class="clear"></div>
 	</div>
 	<div class="body">
-		<div class="woi-label">Web<span>of</span>Ideas</div>
+		<div class="svg">
+			<div class="woi-label">Web<span>of</span>Ideas</div>
+		</div>
 		<div class="closed-ideas section">
 			<hr class="stitch" />
 			<h3>Completed Topics</h3>
