@@ -87,7 +87,7 @@ if($_COOKIE[$auth['cookie']])
 					<div class="idea-circle" style="background-color:<?php echo $i['bg_color'] . "; background-image: url('". $i['bg_img_small'] ."');"?>">
 						<a href="http://adityamukherjee.com/idea/<?php echo $i['slug']?>"></a>
 					</div>
-					<a href="http://adityamukherjee.com/idea/<?php echo $i['slug']?>"><?php echo $i['title']?></a>
+					<a href="http://adityamukherjee.com/idea/<?php echo $i['slug']?>" class="idea-title"><?php echo htmlentities($i['title']) ?></a>
 				</div>
 			<?php
 				endwhile;
