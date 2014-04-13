@@ -58,7 +58,8 @@
 				<li>Freelance <span>2005-09</span></li>
 				<li>Racked Hosting LLC <span>2009</span></li>
 				<li>Planga LLC <span>2010</span></li>
-				<li class='present'>Atticous Technologies LLP <span>2011-Present</span></li>
+				<li>Atticous Technologies LLP <span>2011-2014</span></li>
+				<li class='present'>Funhouse Technologies Pvt. Ltd. <span>2014-Present</span></li>
 			</ul>
 		</div>
 		<div class="elsewhere">
@@ -71,7 +72,7 @@
 			<br/>
 			<h6>Other Places</h6>
 			<ul>
-				<li><a href="http://aditya.attico.us">Atticous</a></li>
+				<li><a href="http://blog.adityamukherjee.com">Svbtle</a>
 				<li><a href="http://twitter.com/aditya">Twitter</a></li>
 				<li><a href="https://github.com/adityavm">Github</a></li>
 				<li><a href="https://instagram.com/aditya_">Instagram</a></li>
@@ -81,6 +82,7 @@
 			<br/>
 			<h6>Abandoned</h6>
 			<ul>
+				<li><a href="http://aditya.attico.us">Atticous</a></li>
 				<li><a href="http://adityamukherjee.com/archives/old-2/">Previous Blog</a></li>
 				<li><a href="http://adityamukherjee.com/archives/reads/">Reading Collection</a></li>
 				<li><a href="http://adityamukherjee.com/archives/old-2/likes/">Likes</a></li>
