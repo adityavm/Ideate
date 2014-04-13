@@ -1,5 +1,5 @@
 function setLocalDraft(val){
-	var exLSVal = JSON.parse(localStorage["tbLastSave"]) || {};
+	var exLSVal = JSON.parse(localStorage["tbLastSave"] || "{}");
 		exLSVal[idea.id] = val;
 	localStorage["tbLastSave"] = JSON.stringify(exLSVal);
 }
@@ -200,7 +200,7 @@ function postForm(id){
 
 function showDraft(){
 	// if saved post, show it above new post
-	var exLSVal = JSON.parse(localStorage["tbLastSave"]);
+	var exLSVal = JSON.parse(localStorage["tbLastSave"] || "{}");
 		//exLSVal = JSON.parse(exLSVal);
 	if(exLSVal && exLSVal[idea.id]){
 		$(".new-post").parents("p.sep").before(
