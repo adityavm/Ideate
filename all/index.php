@@ -51,10 +51,6 @@ if($_COOKIE[$auth['cookie']])
 			echo json_encode($rel_out);
 		?>;
 	</script>
-
-	<?php if(!$LOGGED){ ?>
-		<script src="/tb/woopra.js" type="text/javascript"></script>
-	<?php } ?>
 </head>
 <body>
 <div class="all-content">

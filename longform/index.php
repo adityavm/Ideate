@@ -63,10 +63,6 @@ if($LOGGED){
 
 		<?php if(ctype_digit($pid) && $pid == 0){ ?>$(document).ready(newPost);<?php } ?>
 	</script>
-
-	<?php if(!$LOGGED){ ?>
-		<script src="/tb/woopra.js" type="text/javascript"></script>
-	<?php } ?>
 </head>
 <body>
 	<div class="head">

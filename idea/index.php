@@ -99,10 +99,6 @@ if($LOGGED){
 
 	<script type="text/javascript" src="//use.typekit.net/uit4mor.js"></script>
 	<script type="text/javascript">try{Typekit.load({});}catch(e){}</script>
-
-	<?php if(!$LOGGED){ ?>
-		<script src="/tb/woopra.js" type="text/javascript"></script>
-	<?php } ?>
 </head>
 <body>
 	<div class="head">
