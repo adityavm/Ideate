@@ -72,7 +72,7 @@ if($LOGGED){
 	<div class="head">
 		<div class="bar">
 			<div class="title">
-				<img class="icon" src="https://si0.twimg.com/profile_images/2745465978/5999ce441d4251bcdd79159b5d75f359.png" />
+				<img class="icon" src="http://www.gravatar.com/avatar/d2b4354e4e40f0b5dc30e5c3b2ccf7c5.png" />
 				<span class="label">Aditya Mukherjee</span>
 			</div>
 			<div class="nav">
